@@ -177,7 +177,7 @@ const DropoutCalculator: React.FC = () => {
           <HStack spacing={2} flexWrap="wrap">
             <Badge colorScheme="blue" variant="subtle" px={2} py={0.5} borderRadius="full" fontSize="10px"
               letterSpacing="0.08em">
-              SMART STUDENT IMPACT LAB
+              SMART STUDENT CALCULATOR
             </Badge>
             <Badge colorScheme="orange" variant="subtle" fontSize="10px">Tasa 2.8%</Badge>
             <Badge colorScheme="green" variant="subtle" fontSize="10px">Subvención $120.000</Badge>
@@ -359,7 +359,7 @@ const DropoutCalculator: React.FC = () => {
               Recupera {fmt(results.savings)} en 3 años implementando SmartStudent hoy.
             </Text>
           </VStack>
-          <Button as="a" href="#contacto" size="lg" bg="white" color="gray.900" flexShrink={0}
+          <Button as="a" href="/index.html#demo" size="lg" bg="white" color="gray.900" flexShrink={0}
             rightIcon={<Icon as={ShieldCheck} boxSize="20px" />}
             _hover={{ transform: 'translateY(-2px)', boxShadow: 'xl', bg: 'gray.50' }}
             px={14} py={7} fontSize="md" fontWeight="700" rounded="xl"
