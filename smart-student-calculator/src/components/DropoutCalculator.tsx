@@ -324,8 +324,8 @@ const DropoutCalculator: React.FC = () => {
   const ratio = (results.threeYearLoss / results.smartStudentCost).toFixed(1);
 
   return (
-    <Box minH="100vh" display="flex" flexDirection="column" justifyContent="center"
-      py={{ base: 2, md: 3 }} px={{ base: 3, md: 5 }}
+    <Box minH="100vh" display="flex" flexDirection="column"
+      py={{ base: 1, md: 2 }} px={{ base: 3, md: 5 }}
       bg="transparent"
       color={dark ? '#e2e8f0' : '#0f172a'}
       transition="color 0.4s ease">
