@@ -16,7 +16,7 @@
       "nav.features": "Features",
       "nav.roles": "Roles",
       "nav.pricing": "Plans",
-      "nav.calculator": "Calculator",
+      "nav.calculator": "Lab",
       "nav.login": "Log In",
       "nav.demo": "Schedule Demo",
       
@@ -176,7 +176,7 @@
       "nav.features": "Características",
       "nav.roles": "Roles",
       "nav.pricing": "Planes",
-      "nav.calculator": "Calculadora",
+      "nav.calculator": "Lab",
       "nav.login": "Iniciar Sesión",
       "nav.demo": "Agendar Demo",
       

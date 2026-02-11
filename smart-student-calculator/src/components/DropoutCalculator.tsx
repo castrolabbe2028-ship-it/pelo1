@@ -343,27 +343,27 @@ const DropoutCalculator: React.FC = () => {
         </Box>
 
         {/* ===== CTA HORIZONTAL ===== */}
-        <Box rounded="xl" px={{ base: 5, md: 8 }} py={{ base: 4, md: 4 }} mt={4}
+        <Box rounded="xl" px={{ base: 4, md: 6 }} py={{ base: 3, md: 3 }} mt={3}
           bgGradient="linear(to-r, #0ea5e9, #22c55e)" color="white"
           display="flex" flexDirection={{ base: 'column', md: 'row' }}
-          alignItems="center" justifyContent="space-between" gap={4}>
-          <VStack align={{ base: 'center', md: 'flex-start' }} spacing={1}
+          alignItems="center" justifyContent="space-between" gap={3}>
+          <VStack align={{ base: 'center', md: 'flex-start' }} spacing={0.5}
             textAlign={{ base: 'center', md: 'left' }} flex="1">
-            <Text fontSize="10px" textTransform="uppercase" letterSpacing="0.12em" opacity={0.85}>
+            <Text fontSize="9px" textTransform="uppercase" letterSpacing="0.12em" opacity={0.85}>
               Acción inmediata
             </Text>
-            <Heading as="h3" fontSize={{ base: 'sm', md: 'md', lg: 'lg' }} lineHeight="1.3">
+            <Heading as="h3" fontSize={{ base: 'xs', md: 'sm' }} lineHeight="1.3">
               Detener esta pérdida cuesta menos que recuperar 5 alumnos
             </Heading>
-            <Text fontSize="13px" opacity={0.9}>
+            <Text fontSize="11px" opacity={0.9}>
               Recupera {fmt(results.savings)} en 3 años implementando SmartStudent hoy.
             </Text>
           </VStack>
-          <Button as="a" href="/index.html#demo" size="lg" bg="white" color="gray.900" flexShrink={0}
-            rightIcon={<Icon as={ShieldCheck} boxSize="20px" />}
+          <Button as="a" href="/index.html#demo" size="md" bg="white" color="gray.900" flexShrink={0}
+            rightIcon={<Icon as={ShieldCheck} boxSize="16px" />}
             _hover={{ transform: 'translateY(-2px)', boxShadow: 'xl', bg: 'gray.50' }}
-            px={14} py={7} fontSize="md" fontWeight="700" rounded="xl"
-            minW={{ base: 'full', md: '440px' }} h="auto">
+            px={8} py={4} fontSize="sm" fontWeight="700" rounded="xl"
+            minW={{ base: 'full', md: '340px' }} h="auto">
             Detener la pérdida con SmartStudent
           </Button>
         </Box>
