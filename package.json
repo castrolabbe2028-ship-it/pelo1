@@ -1,0 +1,13 @@
+{
+  "name": "smart_page",
+  "version": "1.0.0",
+  "description": "Landing page de Smart Student",
+  "private": true,
+  "scripts": {
+    "dev": "serve -l 4173 .",
+    "start": "serve -l 4173 ."
+  },
+  "devDependencies": {
+    "serve": "^14.2.5"
+  }
+}

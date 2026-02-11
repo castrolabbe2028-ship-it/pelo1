@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roles | Smart Student</title>
+    <meta name="description" content="Smart Student está diseñado para rectores, profesores y estudiantes. Una sola plataforma, múltiples experiencias personalizadas.">
+    <meta name="keywords" content="software para rectores, herramientas para profesores, app estudiantes, gestión educativa">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Roles | Smart Student">
+    <meta property="og:description" content="Diseñado para rectores, profesores y estudiantes. Experiencias personalizadas.">
+    <meta property="og:url" content="https://smartstudent.io/roles">
+    <meta name="theme-color" content="#2563eb">
+    
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.13.3/dist/cdn.min.js" defer></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['"Plus Jakarta Sans"', 'sans-serif'] },
+                    colors: { brand: { 50: '#eff6ff', 100: '#dbeafe', 500: '#3b82f6', 600: '#2563eb', 900: '#0f172a', neon: '#00dc82' } },
+                    boxShadow: {
+                        'card-hover': '0 20px 40px -5px rgba(0, 0, 0, 0.1)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .glass { background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-bottom: 1px solid rgba(255, 255, 255, 0.5); }
+        .dark .glass { background: rgba(15, 23, 42, 0.8); border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
+        
+        /* Navigation active indicator */
+        #nav-container .nav-link {
+            position: relative;
+        }
+        #nav-container .nav-link.active::after,
+        #nav-container a.nav-link[aria-current="page"]::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%) scaleX(1) !important;
+            width: 24px;
+            height: 3px;
+            background: #2563eb;
+            border-radius: 999px;
+        }
+
+        /* Role Card Hover Effects */
+        .role-card-hover {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .role-card-hover:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 40px -5px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body class="font-sans text-slate-600 bg-white antialiased dark:bg-slate-900 dark:text-slate-300 transition-colors duration-300" data-page="roles">
+    <!-- Skip to content link for accessibility -->
+    <a href="#main-content" class="skip-link sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-white p-4 z-50">Saltar al contenido principal</a>
+
+    <!-- Navbar -->
+    <nav class="fixed w-full z-50 glass py-3">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center">
+                <a href="index.html" class="flex items-center gap-2 group">
+                    <div class="w-10 h-10 bg-brand-600 text-white rounded-xl flex items-center justify-center text-lg shadow-lg"><i class="fa-solid fa-graduation-cap"></i></div>
+                    <span class="font-bold text-xl tracking-tight text-slate-900 dark:text-white">Smart<span class="text-brand-600">Student</span></span>
+                </a>
+                <div class="hidden md:flex items-center">
+                    <!-- Nav Items Container with Indicator -->
+                    <div class="relative flex items-center space-x-8 mr-8" id="nav-container">
+                        <a href="index.html" class="nav-link text-sm font-medium text-slate-600 hover:text-brand-600 transition pt-2 pb-3 dark:text-slate-300 dark:hover:text-white" data-i18n="nav.home">Inicio</a>
+                        <a href="features.html" class="nav-link text-sm font-medium text-slate-600 hover:text-brand-600 transition pt-2 pb-3 dark:text-slate-300 dark:hover:text-white" data-i18n="nav.features">Características</a>
+                        <a href="roles.html" class="nav-link active text-sm font-medium text-slate-600 hover:text-brand-600 transition pt-2 pb-3 dark:text-slate-300 dark:hover:text-white" data-i18n="nav.roles" aria-current="page">Roles</a>
+                        <a href="plans.html" class="nav-link text-sm font-medium text-slate-600 hover:text-brand-600 transition pt-2 pb-3 dark:text-slate-300 dark:hover:text-white" data-i18n="nav.pricing">Planes</a>
+                        <a href="calculator/" class="nav-link text-sm font-medium text-slate-600 hover:text-brand-600 transition pt-2 pb-3 dark:text-slate-300 dark:hover:text-white" data-i18n="nav.calculator">Calculadora</a>
+                    </div>
+                    <div class="h-6 w-px bg-slate-200 dark:bg-slate-700 mr-8"></div>
+                    <a href="index.html#demo" class="px-6 py-2.5 bg-brand-600 rounded-full text-white text-sm font-semibold hover:bg-brand-500 hover:shadow-lg transition" data-i18n="nav.demo">Agendar Demo</a>
+
+                    <!-- Theme & Language Controls -->
+                    <div class="flex items-center gap-3 ml-4">
+                        <button id="theme-toggle" class="inline-flex items-center p-2 rounded-full bg-white/80 hover:bg-slate-100 border border-slate-200 dark:bg-slate-800 dark:border-slate-700 dark:hover:bg-slate-700 transition" aria-label="Toggle theme" data-i18n-title="tooltip.theme">
+                            <i id="theme-icon" class="fa-solid fa-moon text-sm text-slate-700 dark:text-yellow-300"></i>
+                        </button>
+                        <button id="lang-toggle" class="inline-flex items-center px-3 py-1 rounded-full bg-white border border-slate-200 text-sm font-semibold hover:bg-slate-100 dark:bg-slate-800 dark:border-slate-700 dark:text-white transition" aria-label="Toggle language" data-i18n-title="tooltip.lang">ES</button>
+                    </div>
+                </div>
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-btn" class="md:hidden text-slate-700 hover:text-brand-600 p-2 dark:text-white">
+                    <i class="fa-solid fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <main id="main-content" class="pt-32 pb-20 max-w-7xl mx-auto px-4 dark:bg-slate-900">
+        <div class="text-center mb-16">
+            <h1 class="text-4xl font-bold text-slate-900 dark:text-white" data-i18n="roles.title">Diseñado para humanos, no solo usuarios.</h1>
+            <p class="text-slate-500 dark:text-slate-400 mt-3" data-i18n="roles.subtitle">Una sola plataforma, múltiples experiencias personalizadas.</p>
+        </div>
+
+        <!-- Role: Rector -->
+        <div class="role-card-hover role-card-glow bg-slate-50 dark:bg-slate-800 dark:border dark:border-slate-700 rounded-[2.5rem] p-8 md:p-16 mb-12 flex flex-col md:flex-row items-center gap-12 overflow-hidden" data-role-key="tab0">
+            <div class="flex-1 order-2 md:order-1">
+                <div class="w-12 h-12 bg-blue-100 dark:bg-blue-900/30 text-brand-600 rounded-xl flex items-center justify-center text-xl mb-6"><i class="fa-solid fa-user-tie"></i></div>
+                <h2 class="text-3xl font-bold text-slate-900 dark:text-white mb-4" data-i18n="roles.tab0.title">Rectores</h2>
+                <p class="text-lg text-slate-600 dark:text-slate-400 mb-6" data-i18n="roles.tab0.desc">Deje de gestionar papeles y empiece a liderar personas. Tenga el control financiero y académico en su celular.</p>
+                <ul class="space-y-2 text-slate-700 dark:text-slate-300">
+                    <li class="flex items-center gap-2" data-i18n="roles.tab0.b1"><i class="fa-solid fa-check text-brand-600"></i> Dashboard de KPIs en tiempo real</li>
+                    <li class="flex items-center gap-2" data-i18n="roles.tab0.b2"><i class="fa-solid fa-check text-brand-600"></i> Auditoría de calificaciones</li>
+                </ul>
+            </div>
+            <div class="flex-1 order-1 md:order-2">
+                <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="rounded-2xl shadow-xl w-full" alt="Rector">
+            </div>
+        </div>
+        <!-- Role: Teacher -->
+        <div class="role-card-hover role-card-glow bg-slate-50 dark:bg-slate-800 dark:border dark:border-slate-700 rounded-[2.5rem] p-8 md:p-16 mb-12 flex flex-col md:flex-row-reverse items-center gap-12 overflow-hidden" data-role-key="tab1">
+            <div class="flex-1">
+                <img src="https://images.unsplash.com/photo-1529070538774-1843cb3265df?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="rounded-2xl shadow-xl w-full" alt="Teacher">
+            </div>
+            <div class="flex-1">
+                <div class="w-12 h-12 bg-purple-100 dark:bg-purple-900/30 text-purple-600 rounded-xl flex items-center justify-center text-xl mb-6"><i class="fa-solid fa-chalkboard-user"></i></div>
+                <h2 class="text-3xl font-bold text-slate-900 dark:text-white mb-4" data-i18n="roles.tab1.title">Profesores</h2>
+                <p class="text-lg text-slate-600 dark:text-slate-400 mb-6" data-i18n="roles.tab1.desc">Menos burocracia, más enseñanza</p>
+                <ul class="space-y-2 text-slate-700 dark:text-slate-300">
+                    <li class="flex items-center gap-2" data-i18n="roles.tab1.b1"><i class="fa-solid fa-check text-brand-600"></i> Planificación curricular automática</li>
+                    <li class="flex items-center gap-2" data-i18n="roles.tab1.b2"><i class="fa-solid fa-check text-brand-600"></i> Calificación masiva en 1 click</li>
+                    <li class="flex items-center gap-2" data-i18n="roles.tab1.b3"><i class="fa-solid fa-check text-brand-600"></i> Comunicación directa con padres</li>
+                </ul>
+            </div>
+        </div>
+        <!-- Role: Student (consistente con el estilo de las demás) -->
+        <div class="role-card-hover role-card-glow bg-slate-50 dark:bg-slate-800 dark:border dark:border-slate-700 rounded-[2.5rem] p-8 md:p-16 mb-12 flex flex-col md:flex-row items-center gap-12 overflow-hidden" data-role-key="tab2">
+            <div class="flex-1">
+                <div class="w-12 h-12 bg-green-100 dark:bg-green-900/30 text-green-600 rounded-xl flex items-center justify-center text-xl mb-6"><i class="fa-solid fa-graduation-cap"></i></div>
+                <h2 class="text-3xl font-bold text-slate-900 dark:text-white mb-4" data-i18n="roles.tab2.title">Estudiantes</h2>
+                <p class="text-lg text-slate-600 dark:text-slate-400 mb-6" data-i18n="roles.tab2.desc">Tu vida escolar en tu bolsillo. Revisa tu horario, entrega tareas y ve tus notas sin tener que preguntar en secretaría.</p>
+                <ul class="space-y-2 text-slate-700 dark:text-slate-300">
+                    <li class="flex items-center gap-2" data-i18n="roles.tab2.b1"><i class="fa-solid fa-check text-brand-600"></i> Acceso rápido a horario y tareas</li>
+                    <li class="flex items-center gap-2" data-i18n="roles.tab2.b2"><i class="fa-solid fa-check text-brand-600"></i> Notificaciones de entrega y eventos</li>
+                </ul>
+            </div>
+            <div class="flex-1">
+                <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="rounded-2xl shadow-xl w-full" alt="Students">
+            </div>
+        </div>
+
+        <!-- Role: Apoderados -->
+        <div class="role-card-hover role-card-glow bg-slate-50 dark:bg-slate-800 dark:border dark:border-slate-700 rounded-[2.5rem] p-8 md:p-16 mb-12 flex flex-col md:flex-row-reverse items-center gap-12 overflow-hidden" data-role-key="tab3">
+            <div class="flex-1">
+                <img src="https://images.unsplash.com/photo-1609220136736-443140cffec6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="rounded-2xl shadow-xl w-full" alt="Apoderados">
+            </div>
+            <div class="flex-1">
+                <div class="w-12 h-12 bg-orange-100 dark:bg-orange-900/30 text-orange-600 rounded-xl flex items-center justify-center text-xl mb-6"><i class="fa-solid fa-users"></i></div>
+                <h2 class="text-3xl font-bold text-slate-900 dark:text-white mb-4" data-i18n="roles.tab4.title">Apoderados</h2>
+                <p class="text-lg text-slate-600 dark:text-slate-400 mb-6" data-i18n="roles.tab4.desc">Manténgase conectado con la educación de sus hijos. Acceda a notas, pagos y comunicaciones desde cualquier lugar.</p>
+                <ul class="space-y-2 text-slate-700 dark:text-slate-300">
+                    <li class="flex items-center gap-2" data-i18n="roles.tab4.b1"><i class="fa-solid fa-check text-brand-600"></i> Seguimiento de notas en tiempo real</li>
+                    <li class="flex items-center gap-2" data-i18n="roles.tab4.b2"><i class="fa-solid fa-check text-brand-600"></i> Pagos y facturación desde la app</li>
+                    <li class="flex items-center gap-2" data-i18n="roles.tab4.b3"><i class="fa-solid fa-check text-brand-600"></i> Comunicación directa con profesores</li>
+                    <li class="flex items-center gap-2" data-i18n="roles.tab4.b4"><i class="fa-solid fa-check text-brand-600"></i> Notificaciones de eventos y reuniones</li>
+                </ul>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Dark mode separator - only visible in dark mode -->
+    <div class="section-separator h-px w-full hidden dark:block"></div>
+
+    <!-- CTA Section -->
+    <section class="bg-white dark:bg-slate-900 py-16 transition-colors duration-300">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <!-- Separator line above title -->
+            <div class="mb-10 mx-auto h-px w-full" style="background: linear-gradient(90deg, transparent, rgba(37, 99, 235, 0.4), rgba(59, 130, 246, 0.3), rgba(37, 99, 235, 0.4), transparent);"></div>
+            <div class="inline-flex items-center justify-center w-16 h-16 bg-brand-600 rounded-full mb-6" aria-hidden="true">
+                <i class="fa-solid fa-users text-3xl text-white"></i>
+            </div>
+            <h2 class="text-2xl md:text-3xl font-bold mb-4 text-slate-900 dark:text-white" data-i18n="cta.title">Lidere con información y confianza.</h2>
+            <p class="text-slate-500 dark:text-slate-400 mb-8" data-i18n="cta.subtitle">Capacitación y soporte para cada rol: rectores, profesores y apoderados, adaptado a su organización.</p>
+            <a href="index.html#demo" class="inline-block bg-brand-600 text-white px-8 py-3 rounded-full font-bold hover:bg-brand-700 transition shadow-lg" data-i18n="nav.demo">Agendar Demo</a>
+        </div>
+    </section>
+
+    <!-- Dark mode separator -->
+    <div class="section-separator h-px w-full"></div>
+
+    <!-- Footer -->
+    <footer class="bg-white dark:bg-slate-900 pt-16 pb-8 border-t border-slate-100 dark:border-transparent">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="inline-grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-12 mb-12 mx-auto justify-items-center">
+                <div class="col-span-2 md:col-span-2 lg:col-span-1">
+                    <a href="index.html" class="flex items-center gap-2 mb-4 justify-center">
+                        <div class="w-10 h-10 bg-brand-600 rounded-xl flex items-center justify-center text-white text-lg shadow-lg">
+                            <i class="fa-solid fa-graduation-cap"></i>
+                        </div>
+                        <span class="font-bold text-xl text-slate-900 dark:text-white">SmartStudent</span>
+                    </a>
+                    <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed mb-6 max-w-xs mx-auto footer-desc" data-i18n="footer.desc">Transformamos la educación digital, impulsando su prosperidad con automatización inteligente.</p>
+                    <div class="flex gap-4 justify-center">
+                        <a href="#" class="text-slate-400 hover:text-brand-600 transition"><i class="fa-brands fa-twitter text-xl"></i></a>
+                        <a href="#" class="text-slate-400 hover:text-brand-600 transition"><i class="fa-brands fa-linkedin text-xl"></i></a>
+                        <a href="#" class="text-slate-400 hover:text-brand-600 transition"><i class="fa-brands fa-instagram text-xl"></i></a>
+                    </div>
+                </div>
+                
+                <div class="text-center">
+                    <h4 class="font-bold text-slate-900 dark:text-white mb-4" data-i18n="nav.features">Características</h4>
+                    <ul class="space-y-2 text-sm text-slate-600 dark:text-slate-400">
+                        <li><a href="features.html" class="hover:text-brand-600" data-i18n="features.module.academic.title">Académico</a></li>
+                        <li><a href="features.html" class="hover:text-brand-600" data-i18n="features.module.finance.title">Finanzas</a></li>
+                        <li><a href="features.html" class="hover:text-brand-600" data-i18n="features.module.stats.title">Estadísticas</a></li>
+                        <li><a href="features.html" class="hover:text-brand-600" data-i18n="features.module.community.title">Comunidad</a></li>
+                    </ul>
+                </div>
+                
+                <div class="text-center">
+                    <h4 class="font-bold text-slate-900 dark:text-white mb-4" data-i18n="nav.roles">Roles</h4>
+                    <ul class="space-y-2 text-sm text-slate-600 dark:text-slate-400">
+                        <li><a href="roles.html" class="hover:text-brand-600" data-i18n="roles.tab0.title">Administración</a></li>
+                        <li><a href="roles.html" class="hover:text-brand-600" data-i18n="roles.tab1.title">Profesores</a></li>
+                        <li><a href="roles.html" class="hover:text-brand-600" data-i18n="roles.tab2.title">Estudiantes</a></li>
+                        <li><a href="roles.html" class="hover:text-brand-600" data-i18n="roles.tab3.title">Padres</a></li>
+                    </ul>
+                </div>
+                
+                <div class="text-center">
+                    <h4 class="font-bold text-slate-900 dark:text-white mb-4" data-i18n="nav.pricing">Planes</h4>
+                    <ul class="space-y-2 text-sm text-slate-600 dark:text-slate-400">
+                        <li><a href="plans.html" class="hover:text-brand-600" data-i18n="pricing.plan.start.title">Básico</a></li>
+                        <li><a href="plans.html" class="hover:text-brand-600" data-i18n="pricing.plan.growth.title">Growth</a></li>
+                        <li><a href="plans.html" class="hover:text-brand-600" data-i18n="pricing.plan.enterprise.title">Networks</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-slate-100 dark:border-transparent pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-slate-400">
+                <p>&copy; 2025 Smart Student Inc.</p>
+                <span data-i18n="footer.copy">Hecho con <i class="fa-solid fa-heart text-red-400"></i> para la educación</span>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // --- Theme Toggle Logic ---
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const html = document.documentElement;
+        const themeIcon = document.getElementById('theme-icon');
+
+        function updateTheme(isDark) {
+            if (isDark) {
+                html.classList.add('dark');
+                if(themeIcon) themeIcon.classList.replace('fa-moon', 'fa-sun');
+                localStorage.setItem('theme', 'dark');
+            } else {
+                html.classList.remove('dark');
+                if(themeIcon) themeIcon.classList.replace('fa-sun', 'fa-moon');
+                localStorage.setItem('theme', 'light');
+            }
+        }
+
+        const savedTheme = localStorage.getItem('theme');
+        const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        if (savedTheme === 'dark' || (!savedTheme && systemDark)) {
+            updateTheme(true);
+        }
+
+        if(themeToggleBtn) {
+            themeToggleBtn.addEventListener('click', () => {
+                updateTheme(!html.classList.contains('dark'));
+            });
+        }
+
+        // --- Active Link Logic ---
+        const container = document.getElementById('nav-container');
+        const page = document.body.dataset.page;
+        if (container && page) {
+            container.querySelectorAll('a.nav-link').forEach(a => {
+                a.classList.remove('active');
+                a.removeAttribute('aria-current');
+            });
+            const link = container.querySelector('a.nav-link[href="' + page + '.html"]');
+            if (link) {
+                link.classList.add('active');
+                link.setAttribute('aria-current', 'page');
+            }
+        }
+    });
+    </script>
+    <script src="js/main.js"></script>
+</body>
+</html>

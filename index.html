@@ -1,0 +1,935 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Student | El Sistema Operativo de la Educación</title>
+    <meta name="description" content="Plataforma de gestión educativa con Inteligencia Artificial. Unifique finanzas, academia y comunicación en una sola plataforma.">
+    <meta name="keywords" content="gestión escolar, software educativo, ERP escolar, IA educación, colegios, smartstudent">
+    <meta name="author" content="Smart Student Inc.">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph / Social Media -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Smart Student | Gestión Escolar Inteligente">
+    <meta property="og:description" content="Unifique finanzas, academia y comunicación. IA que predice deserción y automatiza cobranza.">
+    <meta property="og:image" content="https://smartstudent.io/og-image.jpg">
+    <meta property="og:url" content="https://smartstudent.io">
+    <meta property="og:site_name" content="Smart Student">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Smart Student | Gestión Escolar Inteligente">
+    <meta name="twitter:description" content="Unifique finanzas, academia y comunicación. IA que predice deserción.">
+    <meta name="twitter:image" content="https://smartstudent.io/twitter-card.jpg">
+    
+    <!-- Theme Color -->
+    <meta name="theme-color" content="#2563eb">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>">
+
+    <!-- Fuentes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Iconos (Font Awesome) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Alpine.js -->
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.13.3/dist/cdn.min.js" defer></script>
+
+    <!-- Configuración Tailwind Avanzada -->
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#eff6ff',
+                            100: '#dbeafe',
+                            500: '#3b82f6',
+                            600: '#2563eb', // Brand Main
+                            700: '#1d4ed8',
+                            900: '#0f172a', // Dark
+                            neon: '#00dc82', // Verde moderno
+                        }
+                    },
+                    backgroundImage: {
+                        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+                    },
+                    boxShadow: {
+                        'glass': '0 8px 32px 0 rgba(31, 38, 135, 0.10)',
+                        'glow-blue': '0 0 40px -10px rgba(37, 99, 235, 0.5)',
+                        'card-hover': '0 20px 40px -5px rgba(0, 0, 0, 0.1)',
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'blob': 'blob 7s infinite',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-15px)' },
+                        },
+                        blob: {
+                            '0%': { transform: 'translate(0px, 0px) scale(1)' },
+                            '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
+                            '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
+                            '100%': { transform: 'translate(0px, 0px) scale(1)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Estilos Base y Utilidades */
+        body {
+            font-feature-settings: "cv11", "ss01";
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Glassmorphism Refinado */
+        .glass {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+        }
+        
+        .dark .glass {
+            background: rgba(15, 23, 42, 0.8);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .glass-card {
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Mesh Gradient Background */
+        .bg-mesh-animate {
+            background-color: #f8fafc;
+            background-image: 
+                radial-gradient(at 40% 20%, hsla(228,100%,74%,0.1) 0px, transparent 50%),
+                radial-gradient(at 80% 0%, hsla(189,100%,56%,0.1) 0px, transparent 50%),
+                radial-gradient(at 0% 50%, hsla(340,100%,76%,0.05) 0px, transparent 50%),
+                radial-gradient(at 80% 50%, hsla(356,100%,66%,0.05) 0px, transparent 50%),
+                radial-gradient(at 0% 100%, hsla(22,100%,77%,0.1) 0px, transparent 50%),
+                radial-gradient(at 80% 100%, hsla(242,100%,70%,0.1) 0px, transparent 50%),
+                radial-gradient(at 0% 0%, hsla(343,100%,76%,0.05) 0px, transparent 50%);
+        }
+        
+        .dark .bg-mesh-animate {
+            background-color: #0f172a;
+            background-image: none; /* Simplificado para modo oscuro */
+        }
+
+        /* Clases para animación al hacer scroll (Scroll Reveal) */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s cubic-bezier(0.5, 0, 0, 1), transform 0.8s cubic-bezier(0.5, 0, 0, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: none;
+        }
+        
+        /* Permitir efectos hover en tarjetas después de reveal */
+        .reveal.active.feature-card-finance,
+        .reveal.active.feature-card-app,
+        .reveal.active.card-hover,
+        .reveal.active.role-card-hover,
+        .reveal.active.stat-bubble {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+        }
+        
+        .reveal.active.card-hover:hover {
+            transform: translateY(-10px) scale(1.02) !important;
+        }
+
+        .reveal.active.role-card-hover:hover,
+        .reveal.active.stat-bubble:hover {
+            transform: translateY(-6px) !important;
+        }
+
+        /* Navigation active indicator */
+        #nav-container .nav-link {
+            position: relative;
+        }
+        #nav-container .nav-link.active::after,
+        #nav-container a.nav-link[aria-current="page"]::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%) scaleX(1) !important;
+            width: 24px;
+            height: 3px;
+            background: #2563eb;
+            border-radius: 999px;
+        }
+
+        /* Hide Scrollbar */
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+        /* Footer description: no word breaking */
+        .footer-desc {
+            text-align: center;
+            hyphens: none;
+            -webkit-hyphens: none;
+            -ms-hyphens: none;
+            word-break: normal;
+            overflow-wrap: normal;
+        }
+
+        /* CTA button in #demo: white border only in light (no .dark) mode */
+        #demo #cta-button {
+            border: 2px solid transparent;
+            transition: border-color .18s ease, box-shadow .18s ease, transform .12s ease;
+        }
+
+        body:not(.dark) #demo #cta-button {
+            border-color: rgba(255,255,255,0.95);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+        }
+
+        body:not(.dark) #demo #cta-button:focus {
+            outline: 2px solid rgba(255,255,255,0.15);
+            outline-offset: 2px;
+        }
+
+        /* Cards with blue border in light mode only */
+        body:not(.dark) .blue-border-light {
+            border-color: #2563eb; /* brand-600 */
+            box-shadow: 0 8px 24px rgba(37,99,235,0.08);
+            transition: border-color .18s ease, box-shadow .18s ease, transform .12s ease;
+        }
+
+        body:not(.dark) .blue-border-light:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 18px 36px rgba(37,99,235,0.10);
+        }
+
+        body:not(.dark) .blue-border-light:focus-within {
+            outline: 2px solid rgba(37,99,235,0.12);
+            outline-offset: 2px;
+        }
+
+        /* Stat bubbles: make borders blue in light mode only */
+        body:not(.dark) .stat-bubble {
+            border: 2px solid #2563eb; /* brand-600 */
+            box-shadow: 0 8px 20px rgba(37,99,235,0.06);
+            transition: border-color .18s ease, box-shadow .18s ease, transform .12s ease;
+        }
+
+        body:not(.dark) .stat-bubble:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 18px 36px rgba(37,99,235,0.08);
+        }
+
+        /* Input invalid state */
+        #cta-email.input-invalid {
+            border: 2px solid #ef4444;
+            box-shadow: 0 8px 24px rgba(239,68,68,0.08);
+        }
+
+        #cta-email-error { display: none; }
+        #cta-email-error:not(.hidden) { display: block; }
+
+        /* Feedback message styles */
+        #cta-feedback {
+            opacity: 0;
+            transform: translateY(-10px);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            pointer-events: none;
+        }
+        #cta-feedback.show {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto;
+        }
+    </style>
+</head>
+<body class="font-sans text-slate-600 bg-slate-50 antialiased selection:bg-brand-600 selection:text-white dark:bg-slate-900 dark:text-slate-300 transition-colors duration-300" data-page="index">
+    <!-- Skip to content link for accessibility -->
+    <a href="#main-content" class="skip-link sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-white p-4 z-50">Saltar al contenido principal</a>
+
+    <!-- Navegación -->
+    <nav class="fixed w-full z-50 transition-all duration-300" 
+         x-data="{ scrolled: false, mobileMenu: false }" 
+         :class="scrolled ? 'glass py-3' : 'bg-transparent py-5'"
+         @scroll.window="scrolled = (window.pageYOffset > 20)">
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center">
+                <!-- Logo -->
+                <a href="#hero" class="flex items-center gap-2 group">
+                    <div class="w-10 h-10 bg-brand-600 text-white rounded-xl flex items-center justify-center text-lg shadow-lg shadow-brand-600/30 group-hover:scale-105 transition duration-300">
+                        <i class="fa-solid fa-graduation-cap"></i>
+                    </div>
+                    <span class="font-bold text-xl tracking-tight text-slate-900 dark:text-white">Smart<span class="text-brand-600">Student</span></span>
+                </a>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center">
+                    <!-- Nav Items Container with Indicator -->
+                    <div class="relative flex items-center space-x-8 mr-8" id="nav-container">
+                        <a href="index.html" class="nav-link active text-sm font-medium text-slate-600 hover:text-brand-600 transition pt-2 pb-3 dark:text-slate-300 dark:hover:text-white" data-i18n="nav.home" aria-current="page">Inicio</a>
+                        <a href="features.html" class="nav-link text-sm font-medium text-slate-600 hover:text-brand-600 transition pt-2 pb-3 dark:text-slate-300 dark:hover:text-white" data-i18n="nav.features">Características</a>
+                        <a href="roles.html" class="nav-link text-sm font-medium text-slate-600 hover:text-brand-600 transition pt-2 pb-3 dark:text-slate-300 dark:hover:text-white" data-i18n="nav.roles">Roles</a>
+                        <a href="plans.html" class="nav-link text-sm font-medium text-slate-600 hover:text-brand-600 transition pt-2 pb-3 dark:text-slate-300 dark:hover:text-white" data-i18n="nav.pricing">Planes</a>
+                        <a href="calculator/" class="nav-link text-sm font-medium text-slate-600 hover:text-brand-600 transition pt-2 pb-3 dark:text-slate-300 dark:hover:text-white" data-i18n="nav.calculator">Calculadora</a>
+                    </div>
+                    <div class="h-6 w-px bg-slate-200 dark:bg-slate-700 mr-8"></div>
+                    <a href="index.html#demo" class="px-6 py-2.5 bg-brand-600 rounded-full text-white text-sm font-semibold hover:bg-brand-500 hover:shadow-lg transition" data-i18n="nav.demo">Agendar Demo</a>
+
+                    <!-- Theme & Language Controls -->
+                    <div class="flex items-center gap-3 ml-4">
+                        <button id="theme-toggle" class="inline-flex items-center p-2 rounded-full bg-white/80 hover:bg-slate-100 border border-slate-200 dark:bg-slate-800 dark:border-slate-700 dark:hover:bg-slate-700 transition" aria-label="Toggle theme" data-i18n-title="tooltip.theme">
+                            <i id="theme-icon" class="fa-solid fa-moon text-sm text-slate-700 dark:text-yellow-300"></i>
+                        </button>
+                        <button id="lang-toggle" class="inline-flex items-center px-3 py-1 rounded-full bg-white border border-slate-200 text-sm font-semibold hover:bg-slate-100 dark:bg-slate-800 dark:border-slate-700 dark:text-white transition" aria-label="Toggle language" data-i18n-title="tooltip.lang">ES</button>
+                    </div>
+                </div>
+
+                <!-- Mobile Button -->
+                <button @click="mobileMenu = !mobileMenu" class="md:hidden text-slate-700 hover:text-brand-600 p-2 dark:text-white">
+                    <i class="fa-solid" :class="mobileMenu ? 'fa-xmark' : 'fa-bars text-xl'"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Wrapper -->
+        <div x-show="mobileMenu" 
+             x-transition:enter="transition ease-out duration-200"
+             x-transition:enter-start="opacity-0 -translate-y-4"
+             x-transition:enter-end="opacity-100 translate-y-0"
+             x-transition:leave="transition ease-in duration-150"
+             x-transition:leave-start="opacity-100 translate-y-0"
+             x-transition:leave-end="opacity-0 -translate-y-4"
+             class="absolute top-full left-0 w-full glass border-b border-white/50 shadow-xl md:hidden dark:bg-slate-900/90 dark:border-slate-800">
+            <div class="flex flex-col p-4 space-y-4 text-center">
+                <a href="index.html" @click="mobileMenu = false" class="nav-link text-slate-700 font-medium py-2 dark:text-slate-200" data-i18n="nav.home">Inicio</a>
+                <a href="features.html" @click="mobileMenu = false" class="nav-link text-slate-700 font-medium py-2 dark:text-slate-200" data-i18n="nav.features">Características</a>
+                <a href="roles.html" @click="mobileMenu = false" class="nav-link text-slate-700 font-medium py-2 dark:text-slate-200" data-i18n="nav.roles">Roles</a>
+                <a href="plans.html" @click="mobileMenu = false" class="nav-link text-slate-700 font-medium py-2 dark:text-slate-200" data-i18n="nav.pricing">Planes</a>
+                <a href="calculator/" @click="mobileMenu = false" class="nav-link text-slate-700 font-medium py-2 dark:text-slate-200" data-i18n="nav.calculator">Calculadora</a>
+                <a href="#" class="nav-link text-brand-600 font-bold py-2 dark:text-brand-400" data-i18n="nav.login">Iniciar Sesión</a>
+                <a href="#demo" class="nav-link bg-brand-600 text-white py-3 rounded-xl font-bold shadow-lg shadow-brand-600/20" data-i18n="nav.demo_text">Agendar Demo</a>
+
+                <div class="flex items-center justify-center gap-3 pt-4 border-t border-white/10 dark:border-slate-700">
+                    <button id="mobile-theme-toggle" class="px-3 py-2 rounded-full bg-white/10 text-sm dark:text-white">
+                        <i class="fa-solid fa-moon mr-2"></i> <span data-i18n="nav.theme">Tema</span>
+                    </button>
+                    <button id="mobile-lang-toggle" class="px-3 py-2 rounded-full bg-white text-sm font-semibold dark:bg-slate-800 dark:text-white" data-i18n-title="tooltip.lang">ES</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header id="hero" class="relative pt-36 pb-20 lg:pt-48 lg:pb-32 overflow-hidden bg-mesh-animate">
+        <!-- Blobs Decorativos de Fondo -->
+        <div class="absolute top-20 left-10 w-72 h-72 bg-purple-300 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob dark:bg-purple-900/40"></div>
+        <div class="absolute top-20 right-10 w-72 h-72 bg-yellow-300 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-2000 dark:bg-yellow-900/40"></div>
+        <div class="absolute -bottom-8 left-1/2 w-72 h-72 bg-pink-300 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-4000 dark:bg-pink-900/40"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                
+                <!-- Columna Texto -->
+                <div class="text-center lg:text-left reveal active">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-brand-100 shadow-sm mb-6 dark:bg-slate-800 dark:border-slate-700">
+                        <span class="flex h-2 w-2 relative">
+                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-neon opacity-75"></span>
+                            <span class="relative inline-flex rounded-full h-2 w-2 bg-brand-neon"></span>
+                        </span>
+                        <span class="text-xs font-semibold text-slate-600 tracking-wide uppercase dark:text-slate-300" data-i18n="hero.badge">Nueva Versión 3.0 con IA</span>
+                    </div>
+
+                    <h1 class="text-5xl lg:text-7xl font-extrabold tracking-tight text-slate-900 leading-[1.1] mb-6 dark:text-white">
+                        <span data-i18n="hero.title_line1">Gestión escolar,</span><br>
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-600 to-indigo-500" data-i18n="hero.title_line2">Inteligente.</span>
+                    </h1>
+                    
+                    <p class="text-lg text-slate-600 mb-8 max-w-2xl mx-auto lg:mx-0 leading-relaxed dark:text-slate-400" data-i18n="hero.paragraph">
+                        Unifique finanzas, academia y comunicación. Deje que nuestra IA prediga la deserción y automatice la cobranza mientras usted se enfoca en educar.
+                    </p>
+                    
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-12">
+                        <a href="#demo" class="bg-brand-600 text-white px-10 py-4 rounded-2xl font-bold text-lg hover:bg-brand-700 hover:-translate-y-1 transition-all shadow-lg shadow-brand-600/30 flex items-center justify-center gap-2">
+                            <span data-i18n="hero.cta_start">Comenzar Ahora</span> <i class="fa-solid fa-arrow-right text-sm"></i>
+                        </a>
+                    </div>
+
+                    <!-- Key Benefits -->
+                    <div class="pt-8 border-t border-slate-200/60 dark:border-slate-700/60">
+                        <div class="flex flex-wrap justify-center lg:justify-start gap-6">
+                            <div class="flex items-center gap-2 text-slate-600 dark:text-slate-300">
+                                <i class="fa-solid fa-shield-check text-green-500"></i>
+                                <span class="text-sm font-medium" data-i18n="hero.benefit1">Datos 100% seguros</span>
+                            </div>
+                            <div class="flex items-center gap-2 text-slate-600 dark:text-slate-300">
+                                <i class="fa-solid fa-headset text-brand-600"></i>
+                                <span class="text-sm font-medium" data-i18n="hero.benefit2">Soporte personalizado</span>
+                            </div>
+                            <div class="flex items-center gap-2 text-slate-600 dark:text-slate-300">
+                                <i class="fa-solid fa-rocket text-purple-500"></i>
+                                <span class="text-sm font-medium" data-i18n="hero.benefit3">Implementación rápida</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Columna Video/Dashboard -->
+                <div class="relative group reveal" x-data="{ playing: true, muted: true }">
+                    <div class="absolute -inset-1 bg-gradient-to-r from-brand-600 to-indigo-600 rounded-[2.5rem] blur opacity-20 group-hover:opacity-40 transition duration-1000"></div>
+                    
+                    <div class="relative rounded-[2rem] bg-slate-900 border border-slate-800 shadow-2xl overflow-hidden aspect-[4/3] transform hover:scale-[1.01] transition duration-500">
+                        <!-- Barra Superior (Fake Browser) -->
+                        <div class="absolute top-0 left-0 right-0 h-10 bg-slate-800/50 backdrop-blur-md flex items-center px-4 z-20 border-b border-white/5">
+                            <div class="flex gap-2">
+                                <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                                <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                                <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                            </div>
+                        </div>
+
+                        <!-- Video Smart Student -->
+                        <video class="w-full h-full object-cover pt-10" autoplay muted loop playsinline>
+                            <source src="./smart-student-demo.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Dark mode separator -->
+    <div class="section-separator h-px w-full"></div>
+
+    <!-- Features Section (Bento Grid) -->
+    <section id="features" class="py-24 bg-white relative dark:bg-slate-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-20 max-w-3xl mx-auto reveal">
+                <h2 class="text-base text-brand-600 font-bold tracking-wide uppercase mb-2" data-i18n="features.title_small">Smart Core</h2>
+                <h3 class="text-3xl lg:text-4xl font-bold text-slate-900 mb-4 dark:text-white" data-i18n="features.title">Un cerebro digital para su colegio</h3>
+                <p class="text-lg text-slate-500 dark:text-slate-400" data-i18n="features.subtitle">Datos que piensan, decisiones que transforman.</p>
+            </div>
+
+            <!-- Bento Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:h-[550px]">
+                
+                <!-- Feature Grande -->
+                <div class="md:col-span-2 bg-slate-50 rounded-[2rem] p-6 lg:p-12 border border-slate-100 blue-border-light card-hover group reveal h-full dark:bg-slate-800 dark:border-slate-700">
+                    <div class="grid lg:grid-cols-2 gap-8 items-center">
+                        <!-- Texto -->
+                        <div class="relative z-10">
+                            <div class="w-14 h-14 bg-white rounded-2xl flex items-center justify-center text-2xl text-brand-600 shadow-sm mb-6 dark:bg-slate-700 dark:text-brand-400">
+                                <i class="fa-solid fa-chart-pie"></i>
+                            </div>
+                            <h4 class="text-2xl font-bold text-slate-900 mb-3 dark:text-white" data-i18n="feature.predictive.title">Analítica Predictiva</h4>
+                            <p class="text-slate-600 max-w-md dark:text-slate-400" data-i18n="feature.predictive.desc">No espere a final de año. Nuestra IA analiza patrones de asistencia y calificaciones para alertar sobre posibles deserciones con 3 meses de antelación.</p>
+                            
+                            <div class="mt-8 flex flex-wrap gap-3">
+                                 <span class="px-3 py-1 bg-white rounded-full text-xs font-bold text-slate-600 border border-slate-200 dark:bg-slate-700 dark:text-slate-300 dark:border-slate-600" data-i18n="feature.predictive.badge1">Retención +15%</span>
+                                 <span class="px-3 py-1 bg-white rounded-full text-xs font-bold text-slate-600 border border-slate-200 dark:bg-slate-700 dark:text-slate-300 dark:border-slate-600" data-i18n="feature.predictive.badge2">Automatización Total</span>
+                            </div>
+                        </div>
+
+                        <!-- Slideshow de Imágenes -->
+                        <div class="feature-image-wrapper flex items-center justify-end" x-data="{ currentSlide: 0, slides: [
+                            'https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                            'https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                            'https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                            'https://images.unsplash.com/photo-1666875753105-c63a6f3bdc86?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
+                        ] }" x-init="setInterval(() => { currentSlide = (currentSlide + 1) % slides.length }, 3000)">
+                            <div class="rounded-xl overflow-hidden shadow-2xl relative">
+                                <template x-for="(slide, index) in slides" :key="index">
+                                    <img :src="slide" 
+                                         class="w-full h-64 md:h-72 lg:h-72 object-cover absolute inset-0 transition-opacity duration-700"
+                                         :class="currentSlide === index ? 'opacity-100 z-10' : 'opacity-0 z-0'"
+                                         alt="Analytics Dashboard">
+                                </template>
+                                <img :src="slides[0]" class="w-full h-64 md:h-72 lg:h-72 object-cover invisible" alt="">
+                                <div class="absolute inset-0 pointer-events-none bg-gradient-to-t from-slate-900/20 to-transparent z-20"></div>
+                                <!-- Indicadores -->
+                                <div class="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-2 z-30">
+                                    <template x-for="(slide, index) in slides" :key="'dot-'+index">
+                                        <button @click="currentSlide = index" 
+                                                class="w-2 h-2 rounded-full transition-all duration-300"
+                                                :class="currentSlide === index ? 'bg-white w-4' : 'bg-white/50'"></button>
+                                    </template>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Columna Derecha -->
+                <div class="flex flex-col gap-8 h-full">
+                    
+                    <!-- Feature Pequeña (Arriba) - Smart Finance -->
+                    <div class="role-card-hover feature-card-finance bg-brand-600 rounded-[2rem] p-8 text-white relative reveal flex-1 cursor-pointer">
+                        <div class="relative z-10">
+                            <div class="icon-container w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center text-xl mb-6 backdrop-blur-sm">
+                                <i class="fa-solid fa-wallet"></i>
+                            </div>
+                            <h4 class="text-xl font-bold mb-2 transition-all duration-300" data-i18n="feature.finance.title">Smart Finance</h4>
+                            <p class="text-blue-100 text-sm" data-i18n="feature.finance.desc">Conciliación automática. Los padres pagan desde la App, el sistema factura al instante.</p>
+                        </div>
+                        <div class="feature-glow absolute -bottom-10 -right-10 w-40 h-40 bg-white/10 rounded-full blur-2xl"></div>
+                    </div>
+
+                    <!-- Feature Pequeña (Abajo) - Native App -->
+                    <div class="role-card-hover feature-card-app bg-slate-50 rounded-[2rem] p-8 border border-slate-100 blue-border-light reveal flex-1 dark:bg-slate-800 dark:border-slate-700 cursor-pointer">
+                        <div class="icon-container w-12 h-12 bg-white rounded-xl flex items-center justify-center text-xl text-brand-neon shadow-sm mb-6 border border-slate-100 dark:bg-slate-700 dark:border-slate-600 relative z-10">
+                            <i class="fa-solid fa-mobile-screen"></i>
+                        </div>
+                        <h4 class="text-xl font-bold text-slate-900 mb-2 dark:text-white transition-all duration-300" data-i18n="feature.app.title">App Nativa</h4>
+                        <p class="text-slate-600 text-sm dark:text-slate-400" data-i18n="feature.app.desc">Una experiencia fluida para estudiantes y padres. Tareas, notas y pagos en el bolsillo.</p>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Dark mode separator -->
+    <div class="section-separator h-px w-full"></div>
+
+    <!-- Roles Section (Tabs Interactivos) -->
+    <section id="roles" class="py-24 bg-slate-50 dark:bg-slate-900 relative overflow-hidden" x-data="{ activeTab: 0 }">
+        <!-- Fondo Abstracto -->
+        <div class="absolute inset-0 opacity-10 dark:opacity-20" style="background-image: url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%233b82f6\' fill-opacity=\'0.4\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-12 reveal">
+                <h2 class="text-3xl font-bold text-slate-900 dark:text-white mb-4" data-i18n="roles.title">Diseñado para cada protagonista</h2>
+                <p class="text-slate-500 dark:text-slate-400" data-i18n="roles.subtitle">Una sola plataforma, múltiples experiencias personalizadas.</p>
+            </div>
+
+            <div class="flex flex-col lg:flex-row gap-12 items-start">
+                
+                <!-- Menú Vertical (Tabs) -->
+                <div class="w-full lg:w-1/3 flex flex-col gap-4 reveal">
+                    <!-- Note: x-for cannot easily access external JS objects in a simple setup, so we keep the structure but add data-i18n inside -->
+                    
+                    <!-- Rector Tab -->
+                    <button @click="activeTab = 0" 
+                        class="text-left p-6 rounded-2xl transition-all duration-300 border border-transparent group relative overflow-hidden"
+                        :class="activeTab === 0 ? 'bg-brand-600/10 dark:bg-white/10 border-brand-200 dark:border-white/10 blue-border-light' : 'hover:bg-slate-100 dark:hover:bg-white/5'">
+                        <div class="flex items-center gap-4 relative z-10">
+                            <div class="w-12 h-12 rounded-full flex items-center justify-center text-xl transition-colors"
+                                 :class="activeTab === 0 ? 'bg-brand-600 text-white' : 'bg-slate-200 dark:bg-slate-800 text-slate-500 dark:text-slate-400'">
+                                <i class="fa-solid fa-user-tie"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg" :class="activeTab === 0 ? 'text-brand-600 dark:text-white' : 'text-slate-700 dark:text-slate-300'" data-i18n="roles.tab0.title">Administración</h4>
+                                <p class="text-sm text-slate-500" data-i18n="roles.tab0.subtitle">Control total y visión 360°</p>
+                            </div>
+                        </div>
+                        <div x-show="activeTab === 0" class="absolute left-0 top-0 bottom-0 w-1 bg-brand-600"></div>
+                    </button>
+
+                    <!-- Teacher Tab -->
+                    <button @click="activeTab = 1" 
+                        class="text-left p-6 rounded-2xl transition-all duration-300 border border-transparent group relative overflow-hidden"
+                        :class="activeTab === 1 ? 'bg-brand-600/10 dark:bg-white/10 border-brand-200 dark:border-white/10 blue-border-light' : 'hover:bg-slate-100 dark:hover:bg-white/5'">
+                        <div class="flex items-center gap-4 relative z-10">
+                            <div class="w-12 h-12 rounded-full flex items-center justify-center text-xl transition-colors"
+                                 :class="activeTab === 1 ? 'bg-brand-600 text-white' : 'bg-slate-200 dark:bg-slate-800 text-slate-500 dark:text-slate-400'">
+                                <i class="fa-solid fa-chalkboard-user"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg" :class="activeTab === 1 ? 'text-brand-600 dark:text-white' : 'text-slate-700 dark:text-slate-300'" data-i18n="roles.tab1.title">Profesores</h4>
+                                <p class="text-sm text-slate-500" data-i18n="roles.tab1.subtitle">Menos burocracia, más enseñanza</p>
+                            </div>
+                        </div>
+                        <div x-show="activeTab === 1" class="absolute left-0 top-0 bottom-0 w-1 bg-brand-600"></div>
+                    </button>
+
+                    <!-- Student Tab -->
+                    <button @click="activeTab = 2" 
+                        class="text-left p-6 rounded-2xl transition-all duration-300 border border-transparent group relative overflow-hidden"
+                        :class="activeTab === 2 ? 'bg-brand-600/10 dark:bg-white/10 border-brand-200 dark:border-white/10 blue-border-light' : 'hover:bg-slate-100 dark:hover:bg-white/5'">
+                        <div class="flex items-center gap-4 relative z-10">
+                            <div class="w-12 h-12 rounded-full flex items-center justify-center text-xl transition-colors"
+                                 :class="activeTab === 2 ? 'bg-brand-600 text-white' : 'bg-slate-200 dark:bg-slate-800 text-slate-500 dark:text-slate-400'">
+                                <i class="fa-solid fa-graduation-cap"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg" :class="activeTab === 2 ? 'text-brand-600 dark:text-white' : 'text-slate-700 dark:text-slate-300'" data-i18n="roles.tab2.title">Estudiantes</h4>
+                                <p class="text-sm text-slate-500" data-i18n="roles.tab2.subtitle">Todo el campus en su bolsillo</p>
+                            </div>
+                        </div>
+                        <div x-show="activeTab === 2" class="absolute left-0 top-0 bottom-0 w-1 bg-brand-600"></div>
+                    </button>
+
+                    <!-- Apoderado Tab -->
+                    <button @click="activeTab = 3" 
+                        class="text-left p-6 rounded-2xl transition-all duration-300 border border-transparent group relative overflow-hidden"
+                        :class="activeTab === 3 ? 'bg-brand-600/10 dark:bg-white/10 border-brand-200 dark:border-white/10 blue-border-light' : 'hover:bg-slate-100 dark:hover:bg-white/5'">
+                        <div class="flex items-center gap-4 relative z-10">
+                            <div class="w-12 h-12 rounded-full flex items-center justify-center text-xl transition-colors"
+                                 :class="activeTab === 3 ? 'bg-brand-600 text-white' : 'bg-slate-200 dark:bg-slate-800 text-slate-500 dark:text-slate-400'">
+                                <i class="fa-solid fa-users"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg" :class="activeTab === 3 ? 'text-brand-600 dark:text-white' : 'text-slate-700 dark:text-slate-300'" data-i18n="roles.tab3.title">Apoderados</h4>
+                                <p class="text-sm text-slate-500" data-i18n="roles.tab3.subtitle">Conectados con la educación de sus hijos</p>
+                            </div>
+                        </div>
+                        <div x-show="activeTab === 3" class="absolute left-0 top-0 bottom-0 w-1 bg-brand-600"></div>
+                    </button>
+                </div>
+
+                <!-- Contenido (Imágenes/Detalles) -->
+                <div class="w-full lg:w-2/3 relative h-[500px] bg-white dark:bg-slate-800 rounded-3xl border border-slate-200 dark:border-slate-700 overflow-hidden shadow-2xl reveal">
+                    
+                    <!-- TAB 0: ADMINISTRACIÓN -->
+                    <div x-show="activeTab === 0" x-transition:enter="transition ease-out duration-500" x-transition:enter-start="opacity-0 translate-y-4" x-transition:enter-end="opacity-100 translate-y-0" class="absolute inset-0">
+                        <!-- Imagen de fondo grande -->
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" class="w-full h-full object-cover" alt="Dashboard Administración">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/40 to-transparent"></div>
+                        
+                        <!-- Widgets flotantes -->
+                        <div class="absolute top-6 right-6 bg-white rounded-xl p-4 shadow-xl animate-float">
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="text-xs text-slate-500 font-medium">Ingresos Hoy</span>
+                                <i class="fa-solid fa-arrow-trend-up text-green-500 text-sm"></i>
+                            </div>
+                            <p class="text-2xl font-bold text-slate-900">$14,200</p>
+                        </div>
+
+                        <div class="absolute top-6 left-6 bg-green-500 px-4 py-3 rounded-xl shadow-xl animate-float" style="animation-delay: 0.5s;">
+                            <div class="flex items-center gap-2">
+                                <i class="fa-solid fa-chart-line text-white"></i>
+                                <span class="text-sm font-bold text-white">+15% Retención</span>
+                            </div>
+                        </div>
+
+                        <div class="absolute bottom-28 right-6 bg-blue-600 px-4 py-3 rounded-xl shadow-xl animate-float" style="animation-delay: 1s;">
+                            <div class="flex items-center gap-3">
+                                <i class="fa-solid fa-bell text-white text-lg"></i>
+                                <div class="text-white">
+                                    <p class="text-sm font-bold">Alerta de IA</p>
+                                    <p class="text-xs opacity-90">3 alumnos en riesgo</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Contenido inferior -->
+                        <div class="absolute bottom-0 left-0 right-0 p-6 lg:p-8">
+                            <div class="flex items-center gap-3 mb-3">
+                                <div class="w-10 h-10 bg-brand-600 rounded-lg flex items-center justify-center">
+                                    <i class="fa-solid fa-chart-pie text-white"></i>
+                                </div>
+                                <p class="text-brand-400 text-sm font-bold uppercase">KPIs en tiempo real</p>
+                            </div>
+                            <h3 class="text-2xl font-bold text-white mb-2" data-i18n="roles.tab0.content.title">Decisiones basadas en datos</h3>
+                            <p class="text-slate-300 text-sm max-w-md" data-i18n="roles.tab0.content.desc">Acceda a reportes financieros y académicos en tiempo real. Elimine las sorpresas a fin de mes.</p>
+                        </div>
+                    </div>
+
+                    <!-- TAB 1: PROFESORES -->
+                    <div x-show="activeTab === 1" style="display: none;" x-transition:enter="transition ease-out duration-500" x-transition:enter-start="opacity-0 translate-y-4" x-transition:enter-end="opacity-100 translate-y-0" class="absolute inset-0">
+                        <!-- Imagen de fondo grande -->
+                        <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" class="w-full h-full object-cover" alt="Profesores">
+                        <div class="absolute inset-0 bg-gradient-to-r from-slate-900 via-slate-900/80 to-transparent"></div>
+                        
+                        <!-- Widget flotante -->
+                        <div class="absolute top-6 right-6 bg-white rounded-2xl p-4 shadow-xl animate-float max-w-[200px]">
+                            <div class="flex items-center gap-3 mb-3 border-b pb-2">
+                                <div class="w-8 h-8 bg-purple-100 rounded-full flex items-center justify-center text-purple-600"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+                                <span class="text-sm font-bold text-slate-800" data-i18n="roles.teacher.generating">Generando Examen...</span>
+                            </div>
+                            <div class="space-y-2">
+                                <div class="h-2 bg-slate-100 rounded w-3/4 animate-pulse"></div>
+                                <div class="h-2 bg-slate-100 rounded w-full animate-pulse"></div>
+                                <div class="h-2 bg-slate-100 rounded w-5/6 animate-pulse"></div>
+                            </div>
+                        </div>
+                        
+                        <!-- Contenido -->
+                        <div class="absolute inset-0 p-8 lg:p-10 flex flex-col justify-center max-w-md">
+                            <div class="flex items-center gap-3 mb-4">
+                                <div class="w-10 h-10 bg-purple-600 rounded-lg flex items-center justify-center">
+                                    <i class="fa-solid fa-chalkboard-user text-white"></i>
+                                </div>
+                                <p class="text-purple-400 text-sm font-bold uppercase">Asistente IA</p>
+                            </div>
+                            <h3 class="text-2xl font-bold text-white mb-4" data-i18n="roles.tab1.content.title">Asistente IA para Docentes</h3>
+                            <ul class="space-y-3 text-slate-200">
+                                <li class="flex items-center gap-3">
+                                    <i class="fa-solid fa-check-circle text-green-400"></i>
+                                    <span data-i18n="roles.teacher.feat1">Planificación curricular automática</span>
+                                </li>
+                                <li class="flex items-center gap-3">
+                                    <i class="fa-solid fa-check-circle text-green-400"></i>
+                                    <span data-i18n="roles.teacher.feat2">Calificación masiva en 1 click</span>
+                                </li>
+                                <li class="flex items-center gap-3">
+                                    <i class="fa-solid fa-check-circle text-green-400"></i>
+                                    <span data-i18n="roles.teacher.feat3">Comunicación directa con padres</span>
+                                </li>
+                                <li class="flex items-center gap-3">
+                                    <i class="fa-solid fa-check-circle text-green-400"></i>
+                                    <span data-i18n="roles.teacher.feat4">Revisión automatizada de tareas y evaluaciones</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- TAB 2: ESTUDIANTES -->
+                    <div x-show="activeTab === 2" style="display: none;" x-transition:enter="transition ease-out duration-500" x-transition:enter-start="opacity-0 translate-y-4" x-transition:enter-end="opacity-100 translate-y-0" class="absolute inset-0">
+                        <!-- Imagen de fondo grande -->
+                        <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" class="w-full h-full object-cover" alt="Estudiantes">
+                        <div class="absolute inset-0 bg-gradient-to-l from-slate-900 via-slate-900/70 to-transparent"></div>
+                        
+                        <!-- Widget flotante - Mockup celular -->
+                        <div class="absolute top-1/2 left-8 -translate-y-1/2 w-[180px] h-[320px] bg-slate-900 border-4 border-slate-600 rounded-[2rem] shadow-2xl overflow-hidden animate-float">
+                            <div class="absolute top-2 left-1/2 -translate-x-1/2 w-16 h-1 bg-slate-700 rounded-full"></div>
+                            <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" class="w-full h-full object-cover" alt="App">
+                            <div class="absolute top-10 left-2 right-2 bg-white/10 backdrop-blur-md p-2 rounded-lg border border-white/10">
+                                <div class="flex gap-2 items-center">
+                                    <div class="w-6 h-6 rounded-full bg-blue-500 flex items-center justify-center text-white text-xs"><i class="fa-solid fa-book text-[10px]"></i></div>
+                                    <div class="text-[10px] text-white">
+                                        <p class="font-bold">Tarea de Historia</p>
+                                        <p class="opacity-70">Vence mañana</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Contenido -->
+                        <div class="absolute inset-0 p-8 lg:p-10 flex flex-col justify-center items-end text-right max-w-md ml-auto mr-8">
+                            <div class="flex items-center gap-3 mb-4 flex-row-reverse">
+                                <div class="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center">
+                                    <i class="fa-solid fa-graduation-cap text-white"></i>
+                                </div>
+                                <p class="text-blue-400 text-sm font-bold uppercase">App Móvil</p>
+                            </div>
+                            <h3 class="text-2xl font-bold text-white mb-3">Todo el campus en tu bolsillo</h3>
+                            <p class="text-slate-300 text-sm mb-4">Revisa tu horario, entrega tareas y ve tus notas sin preguntar en secretaría.</p>
+                            <ul class="space-y-2 text-slate-200 text-sm">
+                                <li class="flex items-center gap-3 flex-row-reverse">
+                                    <i class="fa-solid fa-check-circle text-green-400"></i>
+                                    <span>Acceso rápido a horario y tareas</span>
+                                </li>
+                                <li class="flex items-center gap-3 flex-row-reverse">
+                                    <i class="fa-solid fa-check-circle text-green-400"></i>
+                                    <span>Notificaciones de entregas</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- TAB 3: APODERADOS -->
+                    <div x-show="activeTab === 3" style="display: none;" x-transition:enter="transition ease-out duration-500" x-transition:enter-start="opacity-0 translate-y-4" x-transition:enter-end="opacity-100 translate-y-0" class="absolute inset-0">
+                        <!-- Imagen de fondo grande -->
+                        <img src="https://images.unsplash.com/photo-1609220136736-443140cffec6?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" class="w-full h-full object-cover" alt="Familia">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/70 to-slate-900/30"></div>
+                        
+                        <!-- Widgets flotantes -->
+                        <div class="absolute top-6 right-6 bg-green-500/90 backdrop-blur-md p-3 rounded-xl border border-green-400/30 animate-float">
+                            <div class="flex gap-3 items-center">
+                                <div class="w-8 h-8 rounded-full bg-white flex items-center justify-center text-green-600"><i class="fa-solid fa-check"></i></div>
+                                <div class="text-xs text-white">
+                                    <p class="font-bold">Pago Exitoso</p>
+                                    <p class="opacity-90">Mensualidad Diciembre</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="absolute top-6 left-6 bg-blue-500/90 backdrop-blur-md p-3 rounded-xl border border-blue-400/30 animate-float" style="animation-delay: 0.8s;">
+                            <div class="flex gap-3 items-center">
+                                <div class="w-8 h-8 rounded-full bg-white flex items-center justify-center text-blue-600"><i class="fa-solid fa-chart-line"></i></div>
+                                <div class="text-xs text-white">
+                                    <p class="font-bold">Nueva Calificación</p>
+                                    <p class="opacity-90">Matemáticas: 6.5</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Contenido -->
+                        <div class="absolute bottom-0 left-0 right-0 p-8 lg:p-10">
+                            <div class="flex items-center gap-3 mb-4">
+                                <div class="w-10 h-10 bg-orange-500 rounded-lg flex items-center justify-center">
+                                    <i class="fa-solid fa-users text-white"></i>
+                                </div>
+                                <p class="text-orange-400 text-sm font-bold uppercase">Para Familias</p>
+                            </div>
+                            <h3 class="text-2xl font-bold text-white mb-3" data-i18n="roles.tab3.content.title">Todo sobre sus hijos en un solo lugar</h3>
+                            <div class="grid grid-cols-2 gap-3 text-sm text-slate-200">
+                                <div class="flex items-center gap-2">
+                                    <i class="fa-solid fa-check-circle text-green-400"></i>
+                                    <span>Notas en tiempo real</span>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <i class="fa-solid fa-check-circle text-green-400"></i>
+                                    <span>Pagos desde la app</span>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <i class="fa-solid fa-check-circle text-green-400"></i>
+                                    <span>Chat con profesores</span>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <i class="fa-solid fa-check-circle text-green-400"></i>
+                                    <span>Alertas de eventos</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dark mode separator -->
+    <div class="section-separator h-px w-full"></div>
+
+    <!-- Stats Section -->
+    <section class="py-20 border-b border-slate-200 dark:border-transparent dark:bg-slate-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                <div class="reveal stat-bubble p-6 rounded-full bg-blue-50 dark:bg-blue-900/20 border border-blue-100 dark:border-blue-800">
+                    <p class="text-4xl lg:text-5xl font-extrabold mb-2 text-brand-600 dark:text-blue-400 transition-transform duration-300">100%</p>
+                    <p class="text-sm text-slate-600 uppercase tracking-wide dark:text-slate-400" data-i18n="stats.cloud">En la Nube</p>
+                </div>
+                <div class="reveal stat-bubble p-6 rounded-full bg-blue-50 dark:bg-blue-900/20 border border-blue-100 dark:border-blue-800">
+                    <p class="text-4xl lg:text-5xl font-extrabold mb-2 text-brand-600 dark:text-blue-400 transition-transform duration-300">+5</p>
+                    <p class="text-sm text-slate-600 uppercase tracking-wide dark:text-slate-400" data-i18n="stats.modules">Módulos Integrados</p>
+                </div>
+                <div class="reveal stat-bubble p-6 rounded-full bg-blue-50 dark:bg-blue-900/20 border border-blue-100 dark:border-blue-800">
+                    <p class="text-4xl lg:text-5xl font-extrabold mb-2 text-brand-600 dark:text-blue-400 transition-transform duration-300">1</p>
+                    <p class="text-sm text-slate-600 uppercase tracking-wide dark:text-slate-400" data-i18n="stats.platform">Plataforma Única</p>
+                </div>
+                <div class="reveal stat-bubble p-6 rounded-full bg-blue-50 dark:bg-blue-900/20 border border-blue-100 dark:border-blue-800">
+                    <p class="text-4xl lg:text-5xl font-extrabold mb-2 text-brand-600 dark:text-blue-400 transition-transform duration-300">24/7</p>
+                    <p class="text-sm text-slate-600 uppercase tracking-wide dark:text-slate-400" data-i18n="stats.support">Soporte Humano</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dark mode separator -->
+    <div class="section-separator h-px w-full"></div>
+
+    <!-- CTA Section -->
+    <section id="demo" class="relative py-24 overflow-hidden">
+        <div class="absolute inset-0 bg-brand-600 dark:bg-brand-900"></div>
+        <div class="absolute inset-0 opacity-20 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]"></div>
+        
+        <div class="max-w-4xl mx-auto px-4 text-center relative z-10 reveal">
+            <h2 class="text-4xl md:text-5xl font-bold text-white mb-6" data-i18n="cta.title">El futuro de su colegio comienza hoy.</h2>
+            <p class="text-blue-100 text-lg mb-10 max-w-2xl mx-auto" data-i18n="cta.subtitle">Solicite una sesión guiada con nuestro equipo. Implementación acompañada y soporte experto desde el primer día.</p>
+            
+            <form class="flex flex-col sm:flex-row gap-4 justify-center max-w-lg mx-auto mb-8">
+                <input id="cta-email" type="email" placeholder="Correo institucional" class="px-6 py-4 rounded-full flex-1 focus:outline-none focus:ring-4 focus:ring-blue-400 text-slate-900" data-i18n-placeholder="cta.email_placeholder" aria-describedby="cta-email-error" aria-invalid="false">
+                <button id="cta-button" type="button" class="bg-brand-600 text-white px-8 py-4 rounded-full font-bold hover:bg-brand-500 transition shadow-xl">
+                    <span data-i18n="cta.button">Agendar Demo</span>
+                </button>
+            </form>
+            <p id="cta-email-error" class="mt-3 text-sm text-red-500 hidden font-bold" role="alert">Formato de correo inválido</p>
+            <div id="cta-feedback" class="mt-4 py-3 px-5 rounded-lg bg-white/90 text-green-700 text-sm max-w-md mx-auto shadow-lg" role="status" aria-live="polite"></div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-white pt-16 pb-8 border-t border-slate-100 dark:bg-slate-900 dark:border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="inline-grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-12 mb-12 mx-auto justify-items-center">
+                <div class="col-span-2 md:col-span-2 lg:col-span-1 text-center">
+                    <a href="index.html" class="flex items-center gap-2 mb-4 justify-center">
+                        <div class="w-10 h-10 bg-brand-600 rounded-xl flex items-center justify-center text-white text-lg shadow-lg">
+                            <i class="fa-solid fa-graduation-cap"></i>
+                        </div>
+                        <span class="font-bold text-xl text-slate-900 dark:text-white">SmartStudent</span>
+                    </a>
+                    <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed mb-6 max-w-xs mx-auto footer-desc" data-i18n="footer.desc">Transformamos la educación digital, impulsando su prosperidad con automatización inteligente.</p>
+                    <div class="flex gap-4 justify-center">
+                        <a href="#" class="text-slate-400 hover:text-brand-600 transition"><i class="fa-brands fa-twitter text-xl"></i></a>
+                        <a href="#" class="text-slate-400 hover:text-brand-600 transition"><i class="fa-brands fa-linkedin text-xl"></i></a>
+                        <a href="#" class="text-slate-400 hover:text-brand-600 transition"><i class="fa-brands fa-instagram text-xl"></i></a>
+                    </div>
+                </div>
+                
+                <div class="text-center">
+                    <h4 class="font-bold text-slate-900 mb-4 dark:text-white" data-i18n="nav.features">Características</h4>
+                    <ul class="space-y-2 text-sm text-slate-600 dark:text-slate-400 mx-auto">
+                        <li><a href="features.html" class="hover:text-brand-600" data-i18n="features.module.academic.title">Académico</a></li>
+                        <li><a href="features.html" class="hover:text-brand-600" data-i18n="features.module.finance.title">Finanzas</a></li>
+                        <li><a href="features.html" class="hover:text-brand-600" data-i18n="features.module.stats.title">Estadísticas</a></li>
+                        <li><a href="features.html" class="hover:text-brand-600" data-i18n="features.module.community.title">Comunidad</a></li>
+                    </ul>
+                </div>
+                
+                <div class="text-center">
+                    <h4 class="font-bold text-slate-900 mb-4 dark:text-white" data-i18n="nav.roles">Roles</h4>
+                    <ul class="space-y-2 text-sm text-slate-600 dark:text-slate-400 mx-auto">
+                        <li><a href="roles.html" class="hover:text-brand-600" data-i18n="roles.tab0.title">Administración</a></li>
+                        <li><a href="roles.html" class="hover:text-brand-600" data-i18n="roles.tab1.title">Profesores</a></li>
+                        <li><a href="roles.html" class="hover:text-brand-600" data-i18n="roles.tab2.title">Estudiantes</a></li>
+                        <li><a href="roles.html" class="hover:text-brand-600" data-i18n="roles.tab3.title">Padres</a></li>
+                    </ul>
+                </div>
+                
+                <div class="text-center">
+                    <h4 class="font-bold text-slate-900 mb-4 dark:text-white" data-i18n="nav.pricing">Planes</h4>
+                    <ul class="space-y-2 text-sm text-slate-600 dark:text-slate-400 mx-auto">
+                        <li><a href="plans.html" class="hover:text-brand-600" data-i18n="pricing.plan.start.title">Básico</a></li>
+                        <li><a href="plans.html" class="hover:text-brand-600" data-i18n="pricing.plan.growth.title">Growth</a></li>
+                        <li><a href="plans.html" class="hover:text-brand-600" data-i18n="pricing.plan.enterprise.title">Networks</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-slate-100 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-slate-400 dark:border-slate-800">
+                <p>&copy; 2025 Smart Student Inc.</p>
+                <div class="flex gap-6 mt-4 md:mt-0">
+                    <span data-i18n="footer.copy">Hecho con <i class="fa-solid fa-heart text-red-400"></i> para la educación</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Main Script -->
+    <script src="js/main.js"></script>
+    <script>
+    // Force active state on Home link immediately for index page
+    (function() {
+      const container = document.getElementById('nav-container');
+      if (container && document.body.dataset.page === 'index') {
+        container.querySelectorAll('a.nav-link').forEach(a => {
+          a.classList.remove('active');
+          a.removeAttribute('aria-current');
+        });
+        const homeLink = container.querySelector('a.nav-link[href="index.html"]');
+        if (homeLink) {
+          homeLink.classList.add('active');
+          homeLink.setAttribute('aria-current', 'page');
+        }
+      }
+    })();
+    </script>
+</body>
+</html>

@@ -134,7 +134,6 @@ const DropoutCalculator: React.FC = () => {
   const cardShadow = dark ? '0 4px 14px -6px rgba(0,0,0,0.4)' : '0 4px 14px -6px rgba(15,23,42,0.12)';
   const textPrimary = dark ? 'gray.100' : 'gray.800';
   const textSecondary = dark ? 'gray.400' : 'gray.500';
-  const textMuted = dark ? 'gray.500' : 'gray.600';
   const subtleBg = dark ? 'gray.700' : 'gray.50';
 
   const results = useMemo(() => {

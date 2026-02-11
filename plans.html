@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Planes | Smart Student</title>
+    <meta name="description" content="Precios transparentes por alumno matriculado. Planes Start, Growth y Enterprise para cada tamaño de institución.">
+    <meta name="keywords" content="precios software escolar, planes educativos, costo ERP escolar, prueba gratis">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Planes | Smart Student">
+    <meta property="og:description" content="Inversión transparente. Planes escalables diseñados para crecer junto a tu institución.">
+    <meta property="og:url" content="https://smartstudent.io/pricing">
+    <meta name="theme-color" content="#2563eb">
+    
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.13.3/dist/cdn.min.js" defer></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['"Plus Jakarta Sans"', 'sans-serif'] },
+                    colors: { brand: { 50: '#eff6ff', 100: '#dbeafe', 500: '#3b82f6', 600: '#2563eb', 900: '#0f172a', neon: '#00dc82' } },
+                    boxShadow: {
+                        'card-hover': '0 20px 40px -5px rgba(0, 0, 0, 0.1)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .glass { background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-bottom: 1px solid rgba(255, 255, 255, 0.5); }
+        .dark .glass { background: rgba(15, 23, 42, 0.8); border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
+        
+        /* Navigation active indicator */
+        #nav-container .nav-link {
+            position: relative;
+        }
+        #nav-container .nav-link.active::after,
+        #nav-container a.nav-link[aria-current="page"]::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%) scaleX(1) !important;
+            width: 24px;
+            height: 3px;
+            background: #2563eb;
+            border-radius: 999px;
+        }
+
+        /* Role/Pricing Card Hover Effects */
+        .role-card-hover {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .role-card-hover:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 40px -5px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body class="font-sans text-slate-600 bg-slate-50 antialiased dark:bg-slate-900 dark:text-slate-300 transition-colors duration-300" data-page="plans">
+    <!-- Skip to content link for accessibility -->
+    <a href="#main-content" class="skip-link sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-white p-4 z-50">Saltar al contenido principal</a>
+
+    <!-- Navbar -->
+    <nav class="fixed w-full z-50 glass py-3">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center">
+                <a href="index.html" class="flex items-center gap-2 group">
+                    <div class="w-10 h-10 bg-brand-600 text-white rounded-xl flex items-center justify-center text-lg shadow-lg"><i class="fa-solid fa-graduation-cap"></i></div>
+                    <span class="font-bold text-xl tracking-tight text-slate-900 dark:text-white">Smart<span class="text-brand-600">Student</span></span>
+                </a>
+                <div class="hidden md:flex items-center">
+                    <!-- Nav Items Container with Indicator -->
+                    <div class="relative flex items-center space-x-8 mr-8" id="nav-container">
+                        <a href="index.html" class="nav-link text-sm font-medium text-slate-600 hover:text-brand-600 transition pt-2 pb-3 dark:text-slate-300 dark:hover:text-white" data-i18n="nav.home">Inicio</a>
+                        <a href="features.html" class="nav-link text-sm font-medium text-slate-600 hover:text-brand-600 transition pt-2 pb-3 dark:text-slate-300 dark:hover:text-white" data-i18n="nav.features">Características</a>
+                        <a href="roles.html" class="nav-link text-sm font-medium text-slate-600 hover:text-brand-600 transition pt-2 pb-3 dark:text-slate-300 dark:hover:text-white" data-i18n="nav.roles">Roles</a>
+                        <a href="plans.html" class="nav-link active text-sm font-medium text-slate-600 hover:text-brand-600 transition pt-2 pb-3 dark:text-slate-300 dark:hover:text-white" data-i18n="nav.pricing" aria-current="page">Planes</a>
+                        <a href="calculator/" class="nav-link text-sm font-medium text-slate-600 hover:text-brand-600 transition pt-2 pb-3 dark:text-slate-300 dark:hover:text-white" data-i18n="nav.calculator">Calculadora</a>
+                    </div>
+                    <div class="h-6 w-px bg-slate-200 dark:bg-slate-700 mr-8"></div>
+                    <a href="index.html#demo" class="px-6 py-2.5 bg-brand-600 rounded-full text-white text-sm font-semibold hover:bg-brand-500 hover:shadow-lg transition" data-i18n="nav.demo">Agendar Demo</a>
+
+                    <!-- Theme & Language Controls -->
+                    <div class="flex items-center gap-3 ml-4">
+                        <button id="theme-toggle" class="inline-flex items-center p-2 rounded-full bg-white/80 hover:bg-slate-100 border border-slate-200 dark:bg-slate-800 dark:border-slate-700 dark:hover:bg-slate-700 transition" aria-label="Toggle theme" data-i18n-title="tooltip.theme">
+                            <i id="theme-icon" class="fa-solid fa-moon text-sm text-slate-700 dark:text-yellow-300"></i>
+                        </button>
+                        <button id="lang-toggle" class="inline-flex items-center px-3 py-1 rounded-full bg-white border border-slate-200 text-sm font-semibold hover:bg-slate-100 dark:bg-slate-800 dark:border-slate-700 dark:text-white transition" aria-label="Toggle language" data-i18n-title="tooltip.lang">ES</button>
+                    </div>
+                </div>
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-btn" class="md:hidden text-slate-700 hover:text-brand-600 p-2 dark:text-white">
+                    <i class="fa-solid fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Pricing Header -->
+    <!-- Uniform background: bg-white for light, bg-slate-900 for dark -->
+    <header id="main-content" class="pt-32 pb-12 bg-white dark:bg-slate-900 text-center px-4 transition-colors duration-300">
+        <h1 class="text-4xl font-bold text-slate-900 dark:text-white mb-4" data-i18n="pricing.title">Inversión transparente</h1>
+        <p class="text-lg text-slate-500 dark:text-slate-400" data-i18n="pricing.subtitle">Planes escalables diseñados para crecer junto a tu institución.</p>
+    </header>
+
+    <!-- Dark mode separator -->
+    <div class="section-separator h-px w-full"></div>
+
+    <!-- Pricing Tables -->
+    <!-- Uniform background: bg-white for light, bg-slate-900 for dark -->
+    <section class="pb-24 bg-white dark:bg-slate-900 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-3 gap-8">
+                
+                <!-- Básico -->
+                <!-- Card background stays slate-800 in dark mode for contrast against page slate-900 -->
+                <div class="role-card-hover pricing-card bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-3xl p-8 relative flex flex-col" data-plan="start" role="button" tabindex="0" aria-pressed="false">
+                    <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-2" data-i18n="pricing.plan.start.title">Básico</h3>
+                    <p class="text-sm text-slate-500 dark:text-slate-400 mb-6" data-i18n="pricing.plan.start.subtitle">Hasta 200 estudiantes</p>
+                    <ul class="space-y-4 mb-8 text-sm flex-grow text-slate-700 dark:text-slate-300">
+                        <li class="flex gap-3" data-i18n="pricing.plan.start.b1"><i class="fa-solid fa-check text-brand-600"></i> Módulo Académico</li>
+                        <li class="flex gap-3" data-i18n="pricing.plan.start.b2"><i class="fa-solid fa-check text-brand-600"></i> Módulo Estadístico</li>
+                        <li class="flex gap-3" data-i18n="pricing.plan.start.b3"><i class="fa-solid fa-check text-brand-600"></i> Soporte por Email</li>
+                    </ul>
+                    <a href="index.html#demo" class="w-full py-3 rounded-xl bg-brand-600 text-white font-bold hover:bg-brand-700 transition shadow-lg shadow-brand-600/30 mt-auto block text-center" data-i18n="pricing.plan.start.button">Elegir Básico</a>
+                </div>
+
+                <!-- Crecimiento (Destacado) -->
+                <div class="role-card-hover pricing-card border-2 border-brand-600 rounded-3xl p-8 shadow-2xl relative bg-white dark:bg-slate-800 flex flex-col" data-plan="growth" role="button" tabindex="0" aria-pressed="false">
+                    <div class="absolute top-0 right-0 bg-brand-600 text-white text-xs font-bold px-3 py-1 rounded-bl-xl rounded-tr-xl">MÁS POPULAR</div>
+                    <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-2" data-i18n="pricing.plan.growth.title">Crecimiento</h3>
+                    <p class="text-sm text-slate-500 dark:text-slate-400 mb-6" data-i18n="pricing.plan.growth.subtitle">201 - 1000 estudiantes</p>
+                    <ul class="space-y-4 mb-8 text-sm flex-grow text-slate-700 dark:text-slate-300">
+                        <li class="flex gap-3" data-i18n="pricing.plan.growth.b1"><i class="fa-solid fa-check text-brand-600"></i> Todo lo de Básico</li>
+                        <li class="flex gap-3" data-i18n="pricing.plan.growth.b2"><i class="fa-solid fa-check text-brand-600"></i> <strong>App Móvil Android</strong></li>
+                        <li class="flex gap-3" data-i18n="pricing.plan.growth.b3"><i class="fa-solid fa-check text-brand-600"></i> Módulo Financiero*</li>
+                    </ul>
+                    <a href="index.html#demo" class="w-full py-3 rounded-xl bg-brand-600 text-white font-bold hover:bg-brand-700 transition shadow-lg shadow-brand-600/30 mt-auto block text-center" data-i18n="pricing.plan.growth.button">Agendar Demo</a>
+                </div>
+
+                <!-- Enterprise -->
+                <div class="role-card-hover pricing-card bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-3xl p-8 flex flex-col" data-plan="enterprise" role="button" tabindex="0" aria-pressed="false">
+                    <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-2" data-i18n="pricing.plan.enterprise.title">Redes</h3>
+                    <p class="text-sm text-slate-500 dark:text-slate-400 mb-6" data-i18n="pricing.plan.enterprise.subtitle">Más de 1000 estudiantes</p>
+                    <ul class="space-y-4 mb-8 text-sm flex-grow text-slate-700 dark:text-slate-300">
+                        <li class="flex gap-3" data-i18n="pricing.plan.enterprise.b1"><i class="fa-solid fa-check text-brand-600"></i> Todo lo de Crecimiento</li>
+                        <li class="flex gap-3" data-i18n="pricing.plan.enterprise.b2"><i class="fa-solid fa-check text-brand-600"></i> Multi-sede</li>
+                        <li class="flex gap-3" data-i18n="pricing.plan.enterprise.b3"><i class="fa-solid fa-check text-brand-600"></i> Acceso API</li>
+                        <li class="flex gap-3" data-i18n="pricing.plan.enterprise.b4"><i class="fa-solid fa-check text-brand-600"></i> Gerente de Cuenta Dedicado</li>
+                    </ul>
+                    <a href="index.html#demo" class="w-full py-3 rounded-xl bg-brand-600 text-white font-bold hover:bg-brand-700 transition shadow-lg shadow-brand-600/30 mt-auto block text-center" data-i18n="pricing.plan.enterprise.button">Contactar Ventas</a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Dark mode separator -->
+    <div class="section-separator h-px w-full"></div>
+
+    <!-- CTA Section -->
+    <!-- Uniform background: bg-white for light, bg-slate-900 for dark -->
+    <section class="bg-white dark:bg-slate-900 py-20 transition-colors duration-300">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <div class="inline-flex items-center justify-center w-16 h-16 bg-brand-600 rounded-full mb-6">
+                <i class="fa-solid fa-headset text-3xl text-white"></i>
+            </div>
+            <h2 class="text-3xl md:text-4xl font-bold mb-4 text-slate-900 dark:text-white" data-i18n="cta.title">El plan correcto para su institución.</h2>
+            <p class="text-slate-500 dark:text-slate-400 text-lg mb-8 max-w-2xl mx-auto" data-i18n="cta.subtitle">Cotización y piloto guiado para su institución.</p>
+            <a href="index.html#demo" class="inline-flex items-center gap-2 bg-brand-600 text-white px-8 py-4 rounded-full font-bold hover:bg-brand-700 hover:-translate-y-1 transition-all shadow-xl shadow-brand-600/30">
+                <span data-i18n="nav.demo">Agendar Demo</span>
+                <i class="fa-solid fa-arrow-right"></i>
+            </a>
+            <!-- Separator line below button -->
+            <div class="mt-12 mx-auto w-48 h-px bg-gradient-to-r from-transparent via-brand-600/50 to-transparent"></div>
+        </div>
+    </section>
+
+    <!-- Dark mode separator -->
+    <div class="section-separator h-px w-full"></div>
+
+    <!-- Footer -->
+    <footer class="bg-white pt-16 pb-8 border-t border-slate-100 dark:bg-slate-900 dark:border-transparent transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="inline-grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-12 mb-12 mx-auto justify-items-center">
+                <div class="col-span-2 md:col-span-2 lg:col-span-1">
+                    <a href="index.html" class="flex items-center gap-2 mb-4 justify-center">
+                        <div class="w-10 h-10 bg-brand-600 rounded-xl flex items-center justify-center text-white text-lg shadow-lg">
+                            <i class="fa-solid fa-graduation-cap"></i>
+                        </div>
+                        <span class="font-bold text-xl text-slate-900 dark:text-white">SmartStudent</span>
+                    </a>
+                    <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed mb-6 max-w-xs mx-auto footer-desc" data-i18n="footer.desc">Transformamos la educación digital, impulsando su prosperidad con automatización inteligente.</p>
+                    <div class="flex gap-4 justify-center">
+                        <a href="#" class="text-slate-400 hover:text-brand-600 transition"><i class="fa-brands fa-twitter text-xl"></i></a>
+                        <a href="#" class="text-slate-400 hover:text-brand-600 transition"><i class="fa-brands fa-linkedin text-xl"></i></a>
+                        <a href="#" class="text-slate-400 hover:text-brand-600 transition"><i class="fa-brands fa-instagram text-xl"></i></a>
+                    </div>
+                </div>
+                
+                <div class="text-center">
+                    <h4 class="font-bold text-slate-900 mb-4 dark:text-white" data-i18n="nav.features">Características</h4>
+                    <ul class="space-y-2 text-sm text-slate-600 dark:text-slate-400">
+                        <li><a href="features.html" class="hover:text-brand-600" data-i18n="features.module.academic.title">Académico</a></li>
+                        <li><a href="features.html" class="hover:text-brand-600" data-i18n="features.module.finance.title">Finanzas</a></li>
+                        <li><a href="features.html" class="hover:text-brand-600" data-i18n="features.module.stats.title">Estadísticas</a></li>
+                        <li><a href="features.html" class="hover:text-brand-600" data-i18n="features.module.community.title">Comunidad</a></li>
+                    </ul>
+                </div>
+                
+                <div class="text-center">
+                    <h4 class="font-bold text-slate-900 mb-4 dark:text-white" data-i18n="nav.roles">Roles</h4>
+                    <ul class="space-y-2 text-sm text-slate-600 dark:text-slate-400">
+                        <li><a href="roles.html" class="hover:text-brand-600" data-i18n="roles.tab0.title">Administración</a></li>
+                        <li><a href="roles.html" class="hover:text-brand-600" data-i18n="roles.tab1.title">Profesores</a></li>
+                        <li><a href="roles.html" class="hover:text-brand-600" data-i18n="roles.tab2.title">Estudiantes</a></li>
+                        <li><a href="roles.html" class="hover:text-brand-600" data-i18n="roles.tab3.title">Padres</a></li>
+                    </ul>
+                </div>
+                
+                <div class="text-center">
+                    <h4 class="font-bold text-slate-900 mb-4 dark:text-white" data-i18n="nav.pricing">Planes</h4>
+                    <ul class="space-y-2 text-sm text-slate-600 dark:text-slate-400">
+                        <li><a href="plans.html" class="hover:text-brand-600" data-i18n="pricing.plan.start.title">Básico</a></li>
+                        <li><a href="plans.html" class="hover:text-brand-600" data-i18n="pricing.plan.growth.title">Growth</a></li>
+                        <li><a href="plans.html" class="hover:text-brand-600" data-i18n="pricing.plan.enterprise.title">Networks</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-slate-100 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-slate-400 dark:border-transparent">
+                <p>&copy; 2025 Smart Student Inc.</p>
+                <span data-i18n="footer.copy">Hecho con <i class="fa-solid fa-heart text-red-400"></i> para la educación</span>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // --- Theme Toggle Logic ---
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const html = document.documentElement;
+        const themeIcon = document.getElementById('theme-icon');
+
+        function updateTheme(isDark) {
+            if (isDark) {
+                html.classList.add('dark');
+                if(themeIcon) themeIcon.classList.replace('fa-moon', 'fa-sun');
+                localStorage.setItem('theme', 'dark');
+            } else {
+                html.classList.remove('dark');
+                if(themeIcon) themeIcon.classList.replace('fa-sun', 'fa-moon');
+                localStorage.setItem('theme', 'light');
+            }
+        }
+
+        const savedTheme = localStorage.getItem('theme');
+        const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        if (savedTheme === 'dark' || (!savedTheme && systemDark)) {
+            updateTheme(true);
+        }
+
+        if(themeToggleBtn) {
+            themeToggleBtn.addEventListener('click', () => {
+                updateTheme(!html.classList.contains('dark'));
+            });
+        }
+
+        // --- Active Link Logic ---
+        const container = document.getElementById('nav-container');
+        const page = document.body.dataset.page;
+        if (container && page) {
+            container.querySelectorAll('a.nav-link').forEach(a => {
+                a.classList.remove('active');
+                a.removeAttribute('aria-current');
+            });
+            const link = container.querySelector('a.nav-link[href="' + page + '.html"]');
+            if (link) {
+                link.classList.add('active');
+                link.setAttribute('aria-current', 'page');
+            }
+        }
+    });
+    </script>
+    <script src="js/main.js"></script>
+</body>
+</html>
