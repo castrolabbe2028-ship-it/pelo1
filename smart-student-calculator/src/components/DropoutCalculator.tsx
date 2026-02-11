@@ -324,8 +324,8 @@ const DropoutCalculator: React.FC = () => {
   const ratio = (results.threeYearLoss / results.smartStudentCost).toFixed(1);
 
   return (
-    <Box minH="100vh" display="flex" flexDirection="column"
-      pt={{ base: 2, md: 3 }} pb={0} px={{ base: 3, md: 5 }}
+    <Box display="flex" flexDirection="column"
+      pt={{ base: 1, md: 2 }} pb={0} px={{ base: 3, md: 5 }}
       bg="transparent"
       color={dark ? '#e2e8f0' : '#0f172a'}
       transition="color 0.4s ease">
@@ -342,17 +342,17 @@ const DropoutCalculator: React.FC = () => {
           </HStack>
         </HStack>
 
-        <Heading as="h1" fontSize={{ base: 'md', md: 'lg', lg: 'xl' }} lineHeight="1.15" mb={0.5}
+        <Heading as="h1" fontSize={{ base: 'md', md: 'lg', lg: 'xl' }} lineHeight="1.15" mb={0}
           bgGradient="linear(to-r, #0ea5e9, #22c55e, #f97316)" bgClip="text">
           {t('headline')}
         </Heading>
-        <Text fontSize={{ base: '10px', md: '11px' }} color={textSecondary} mb={{ base: 1.5, md: 2 }} maxW="600px">
+        <Text fontSize={{ base: '10px', md: '11px' }} color={textSecondary} mb={{ base: 1, md: 1.5 }} maxW="600px">
           {t('subheadline')}
         </Text>
 
         {/* ===== MAIN 3-COL GRID ===== */}
         <Box display={{ base: 'flex', md: 'grid' }} flexDirection="column"
-          gridTemplateColumns={{ md: '1fr 1fr 1.5fr' }} gap={{ base: 2, md: 3 }}>
+          gridTemplateColumns={{ md: '1fr 1fr 1.5fr' }} gap={{ base: 2, md: 2.5 }}>
 
           {/* —— COL 1: Inputs —— */}
           <Box bg={cardBg} border="1px solid" borderColor={cardBorder} rounded="xl" p={3}
@@ -450,7 +450,7 @@ const DropoutCalculator: React.FC = () => {
               <Text fontSize="13px" fontWeight="700" color={textPrimary}>{t('chartTitle')}</Text>
               <Badge colorScheme="blue" fontSize="10px">{t('chart3y')}</Badge>
             </HStack>
-            <Box flex="1" minH="180px">
+            <Box flex="1" minH="160px">
               <ResponsiveContainer width="100%" height="100%">
                 <BarChart data={chartData} margin={{ top: 5, right: 10, left: -8, bottom: 5 }}>
                   <XAxis 
@@ -499,10 +499,12 @@ const DropoutCalculator: React.FC = () => {
               {t('ctaText')}
             </Text>
           </Box>
-          <Button as="a" href="/index.html#demo" size="sm" bg="white" color="gray.900" flexShrink={0}
-            rightIcon={<Icon as={ShieldCheck} boxSize="14px" />}
-            _hover={{ transform: 'translateY(-1px)', boxShadow: 'lg', bg: 'gray.50' }}
-            px={8} minW="200px" fontSize="xs" fontWeight="700" rounded="lg">
+          <Button as="a" href="/index.html#demo" size="md" bg="white" color="gray.900" flexShrink={0}
+            rightIcon={<Icon as={ShieldCheck} boxSize="18px" />}
+            _hover={{ transform: 'scale(1.05)', boxShadow: '0 8px 25px rgba(0,0,0,0.25)', bg: 'gray.50' }}
+            px={10} minW="240px" fontSize="sm" fontWeight="800" rounded="xl"
+            transition="all 0.3s ease"
+            boxShadow="0 4px 15px rgba(0,0,0,0.15)">
             {t('ctaBtn')}
           </Button>
         </HStack>
