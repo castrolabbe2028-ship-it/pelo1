@@ -325,7 +325,7 @@ const DropoutCalculator: React.FC = () => {
 
   return (
     <Box minH="100vh" display="flex" flexDirection="column"
-      pt={{ base: 5, md: 6 }} pb={{ base: 1, md: 2 }} px={{ base: 3, md: 5 }}
+      pt={{ base: 2, md: 3 }} pb={0} px={{ base: 3, md: 5 }}
       bg="transparent"
       color={dark ? '#e2e8f0' : '#0f172a'}
       transition="color 0.4s ease">
@@ -342,29 +342,29 @@ const DropoutCalculator: React.FC = () => {
           </HStack>
         </HStack>
 
-        <Heading as="h1" fontSize={{ base: 'lg', md: 'xl', lg: '2xl' }} lineHeight="1.15" mb={1}
+        <Heading as="h1" fontSize={{ base: 'md', md: 'lg', lg: 'xl' }} lineHeight="1.15" mb={0.5}
           bgGradient="linear(to-r, #0ea5e9, #22c55e, #f97316)" bgClip="text">
           {t('headline')}
         </Heading>
-        <Text fontSize={{ base: '11px', md: '12px' }} color={textSecondary} mb={{ base: 2, md: 3 }} maxW="600px">
+        <Text fontSize={{ base: '10px', md: '11px' }} color={textSecondary} mb={{ base: 1.5, md: 2 }} maxW="600px">
           {t('subheadline')}
         </Text>
 
         {/* ===== MAIN 3-COL GRID ===== */}
         <Box display={{ base: 'flex', md: 'grid' }} flexDirection="column"
-          gridTemplateColumns={{ md: '1fr 1fr 1.5fr' }} gap={{ base: 3, md: 4 }}>
+          gridTemplateColumns={{ md: '1fr 1fr 1.5fr' }} gap={{ base: 2, md: 3 }}>
 
           {/* —— COL 1: Inputs —— */}
-          <Box bg={cardBg} border="1px solid" borderColor={cardBorder} rounded="xl" p={4}
+          <Box bg={cardBg} border="1px solid" borderColor={cardBorder} rounded="xl" p={3}
             boxShadow={cardShadow} transition="background 0.3s, border-color 0.3s">
-            <HStack spacing={2} mb={3}>
+            <HStack spacing={2} mb={2}>
               <Box bg={dark ? 'orange.900' : 'orange.100'} p={1} rounded="md">
                 <Icon as={AlertTriangle} boxSize="13px" color="orange.500" />
               </Box>
               <Text fontSize="13px" fontWeight="700" color={textPrimary}>{t('inputTitle')}</Text>
             </HStack>
 
-            <VStack spacing={3} align="stretch">
+            <VStack spacing={2} align="stretch">
               <FormControl>
                 <FormLabel fontSize="12px" fontWeight="600" mb={1} color={textPrimary}>{t('enrollment')}</FormLabel>
                 <Input type="number" value={enrollment} size="sm" rounded="lg"
@@ -400,7 +400,7 @@ const DropoutCalculator: React.FC = () => {
                 </Select>
               </FormControl>
 
-              <HStack spacing={2} p={2.5} bg={dark ? 'rgba(249,115,22,0.2)' : 'orange.50'} rounded="lg"
+              <HStack spacing={2} p={2} bg={dark ? 'rgba(249,115,22,0.2)' : 'orange.50'} rounded="lg"
                 border="1px solid" borderColor={dark ? 'rgba(249,115,22,0.4)' : 'orange.100'}>
                 <Icon as={TrendingDown} color={dark ? 'orange.300' : 'orange.400'} boxSize="14px" />
                 <Text fontSize="11px" color={dark ? 'white' : 'gray.600'}>
@@ -424,7 +424,7 @@ const DropoutCalculator: React.FC = () => {
             </SimpleGrid>
 
             {/* Comparison */}
-            <Box bg={cardBg} border="1px solid" borderColor={cardBorder} rounded="xl" px={3} py={3}
+            <Box bg={cardBg} border="1px solid" borderColor={cardBorder} rounded="xl" px={3} py={2}
               boxShadow={cardShadow} flex="1" display="flex" flexDirection="column"
               transition="background 0.3s, border-color 0.3s">
               <Text fontSize="13px" fontWeight="700" mb={0.5} color={textPrimary}>{t('comparison')}</Text>
@@ -443,14 +443,14 @@ const DropoutCalculator: React.FC = () => {
           </VStack>
 
           {/* —— COL 3: Chart —— */}
-          <Box bg={cardBg} border="1px solid" borderColor={cardBorder} rounded="xl" px={3} py={3}
+          <Box bg={cardBg} border="1px solid" borderColor={cardBorder} rounded="xl" px={3} py={2}
             boxShadow={cardShadow} display="flex" flexDirection="column"
             transition="background 0.3s, border-color 0.3s">
-            <HStack justify="space-between" mb={2}>
+            <HStack justify="space-between" mb={1}>
               <Text fontSize="13px" fontWeight="700" color={textPrimary}>{t('chartTitle')}</Text>
               <Badge colorScheme="blue" fontSize="10px">{t('chart3y')}</Badge>
             </HStack>
-            <Box flex="1" minH="220px">
+            <Box flex="1" minH="180px">
               <ResponsiveContainer width="100%" height="100%">
                 <BarChart data={chartData} margin={{ top: 5, right: 10, left: -8, bottom: 5 }}>
                   <XAxis 
@@ -488,7 +488,7 @@ const DropoutCalculator: React.FC = () => {
         </Box>
 
         {/* ===== CTA HORIZONTAL ===== */}
-        <HStack rounded="xl" px={{ base: 3, md: 5 }} py={{ base: 2, md: 2.5 }} mt={3}
+        <HStack rounded="xl" px={{ base: 3, md: 5 }} py={{ base: 1.5, md: 2 }} mt={2}
           bgGradient="linear(to-r, #0ea5e9, #22c55e)" color="white"
           align="center" justify="space-between" flexWrap="wrap" gap={2}>
           <Box>
