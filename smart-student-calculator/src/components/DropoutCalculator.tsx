@@ -43,7 +43,7 @@ const SOSTAINER_MULTIPLIERS: Record<string, number> = { MUNICIPAL: 1.0, SUBVENCI
 type Lang = 'es' | 'en';
 const i18n: Record<Lang, Record<string, string>> = {
   es: {
-    badge: 'SMART STUDENT IMPACT LAB',
+    badge: 'IMPACT LAB',
     badgeTasa: 'Tasa 2.8%',
     badgeSub: 'Subvención $120.000',
     headline: 'Cada alumno que pierdes tiene un costo invisible',
@@ -88,7 +88,7 @@ const i18n: Record<Lang, Record<string, string>> = {
     navDemo: 'Agendar Demo',
   },
   en: {
-    badge: 'SMART STUDENT IMPACT LAB',
+    badge: 'IMPACT LAB',
     badgeTasa: 'Rate 2.8%',
     badgeSub: 'Subsidy $120,000',
     headline: 'Every student you lose has an invisible cost',
