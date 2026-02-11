@@ -157,7 +157,7 @@ function useThemeToggle() {
   useEffect(() => {
     const icon = document.getElementById('navbar-theme-icon');
     const navbar = document.getElementById('site-navbar');
-    const logo = navbar?.querySelector('span[style*="color:#0f172a"]') as HTMLElement;
+    const logo = document.getElementById('navbar-logo-text');
     if (icon) {
       icon.className = dark ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
       icon.style.color = dark ? '#fbbf24' : '#475569';
@@ -502,7 +502,7 @@ const DropoutCalculator: React.FC = () => {
           <Button as="a" href="/index.html#demo" size="sm" bg="white" color="gray.900" flexShrink={0}
             rightIcon={<Icon as={ShieldCheck} boxSize="14px" />}
             _hover={{ transform: 'translateY(-1px)', boxShadow: 'lg', bg: 'gray.50' }}
-            px={6} fontSize="xs" fontWeight="700" rounded="lg">
+            px={8} minW="200px" fontSize="xs" fontWeight="700" rounded="lg">
             {t('ctaBtn')}
           </Button>
         </HStack>
