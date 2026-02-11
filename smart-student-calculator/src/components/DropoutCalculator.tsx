@@ -325,7 +325,7 @@ const DropoutCalculator: React.FC = () => {
 
   return (
     <Box display="flex" flexDirection="column"
-      pt={{ base: 1, md: 2 }} pb={0} px={{ base: 3, md: 5 }}
+      pt={{ base: 4, md: 5 }} pb={0} px={{ base: 3, md: 5 }}
       bg="transparent"
       color={dark ? '#e2e8f0' : '#0f172a'}
       transition="color 0.4s ease">
